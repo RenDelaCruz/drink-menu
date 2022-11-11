@@ -4,13 +4,29 @@
 
 This project was bootstrapped with:
 - [Create React App](https://github.com/facebook/create-react-app)
-- [Mantine UI](https://mantine.dev/)
+- [Mantine](https://mantine.dev/)
+  - [Mantine UI Components](https://ui.mantine.dev/)
 
 
 ## Startup
 
+#### `npm start`
+
 To start the project, run `npm start`. \
 The project will automatically open the browser at http://localhost:3000.
+
+To stop the server, use `CTRL + C`.
+
+## File Structure
+
+- public (tab icon and root HTML)
+- reference (unused code that we probably want to keep for reference)
+- src
+  - assets (images)
+  - components (React components)
+  - pages (single page views)
+  - utils (JavaScript functions)
+
 
 ## Other Available Scripts
 
