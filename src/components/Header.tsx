@@ -25,6 +25,7 @@ const useStyles = createStyles((theme) => ({
     justifyContent: 'space-between',
     alignItems: 'center',
     height: '100%',
+    backgroundColor: '#F6F5F6',
   },
 }));
 

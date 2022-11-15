@@ -1,4 +1,16 @@
-import { MantineNumberSize, Navbar, Text } from '@mantine/core';
+import { Container, createStyles, MantineNumberSize, Navbar } from '@mantine/core';
+import CategoryButton from './CategoryButton';
+
+const useStyles = createStyles((theme) => ({
+  noBorder: {
+    border: 'none',
+  },
+
+  padded: {
+    padding: '20px 50px',
+    // border: '1px solid black'
+  },
+}));
 
 type CategoryNavigationProps = {
   padding: MantineNumberSize;
@@ -10,10 +22,39 @@ type CategoryNavigationProps = {
   };
 };
 
+const categories = [
+  {
+    name: 'Cocktails',
+    icon: <i className="fa-solid fa-martini-glass-citrus"></i>,
+  },
+  {
+    name: 'Beer',
+    icon: <i className='fa-solid fa-beer-mug-empty'></i>,
+  },
+  {
+    name: 'Wine',
+    icon: <i className="fa-solid fa-wine-bottle"></i>,
+  },
+  {
+    name: 'Spirits',
+    icon: <i className="fa-solid fa-whiskey-glass"></i>,
+  },
+  {
+    name: 'Liqueurs',
+    icon: <i className="fa-solid fa-bottle-droplet"></i>,
+  },
+];
+
 function CategoryNavigation({ ...navbarProps }: CategoryNavigationProps) {
+  const { classes } = useStyles();
+
   return (
-    <Navbar {...navbarProps}>
-      <Text>TODO: Drink categories</Text>
+    <Navbar className={classes.noBorder} {...navbarProps}>
+      <Container className={classes.padded}>
+        {categories.map((category) => (
+          <CategoryButton leftIcon={category.icon}>{category.name}</CategoryButton>
+        ))}
+      </Container>
     </Navbar>
   );
 }

@@ -1,6 +1,7 @@
 import { AppShell } from '@mantine/core';
 import { useState } from 'react';
 import CategoryNavigation from '../components/CategoryNavigation';
+import Feed from '../components/Feed';
 import Header from '../components/Header';
 
 function MainMenu() {
@@ -10,7 +11,7 @@ function MainMenu() {
     <AppShell
       navbarOffsetBreakpoint='sm'
       fixed
-      header={<Header opened={opened} setOpened={setOpened} height={70} padding='md' />}
+      header={<Header opened={opened} setOpened={setOpened} height={90} padding='md' />}
       navbar={
         <CategoryNavigation
           padding='md'
@@ -20,7 +21,7 @@ function MainMenu() {
         />
       }
     >
-      TODO: Drink cards here
+      <Feed />
     </AppShell>
   );
 }
