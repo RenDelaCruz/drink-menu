@@ -1,6 +1,7 @@
 import { ColorScheme, ColorSchemeProvider, MantineProvider } from '@mantine/core';
 import { useState } from 'react';
 import MainMenu from './MainMenu';
+import IndividualDrink from './IndividualDrink';
 
 function App() {
   const [colorScheme, setColorScheme] = useState<ColorScheme>('light');
