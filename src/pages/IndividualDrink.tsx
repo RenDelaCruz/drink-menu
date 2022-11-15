@@ -1,6 +1,7 @@
-import { Image, Center, Group, Button, Title, } from '@mantine/core';
+import { Image, Center, Group, Button, Title, Space } from '@mantine/core';
 import DrinkInfo from '../components/DrinkInfo';
 import ItemReview from '../components/ItemReview';
+import FoodPairs from '../components/FoodPairs';
 import Margarita from '../Images/Margarita.jpg';
 import Stars from '../Images/Stars.jpg';
 
@@ -30,10 +31,13 @@ function IndividualDrink() {
           src={Margarita}
           width={400}
           height={400}
+          fit="contain"
         />
         <DrinkInfo />
         <ItemReview />
       </Group>
+      <Space h="lg" />
+      <FoodPairs />
       </div>
   );
 }

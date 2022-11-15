@@ -1,6 +1,5 @@
 import { Container, Title, Button, Space, Image, Text, Stack } from '@mantine/core';
 import Stars from '../Images/Stars.jpg';
-import ThemeToggle from './ThemeToggle';
 
 function DrinkInfo () {
     return (
