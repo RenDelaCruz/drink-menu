@@ -11,7 +11,7 @@ export function ThemeToggle() {
   return (
     <ActionIcon
       variant='outline'
-      color={colorScheme === 'dark' ? '' : 'yellow'}
+      color={colorScheme === 'dark' ? '' : 'teal'}
       onClick={() => toggleColorScheme()}
       size='lg'
       // sx={(theme) => ({
