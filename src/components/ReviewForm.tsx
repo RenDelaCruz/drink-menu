@@ -1,6 +1,7 @@
 import { Textarea, Input, Container, Text, Button, useMantineTheme } from '@mantine/core';
 import { useState } from 'react';
 import { FaStar } from 'react-icons/fa';
+import { FileX } from 'tabler-icons-react';
 
 function ReviewForm() {
     const theme = useMantineTheme();
@@ -8,11 +9,11 @@ function ReviewForm() {
     const [currentValue, setCurrentValue] = useState(0);
     const [hoverValue, setHoverValue] = useState(undefined);
 
-    const handleClick = value => {
+    const handleClick = (value: any) => {
         setCurrentValue(value)
     };
 
-    const handleMouseOver = newHoverValue => {
+    const handleMouseOver = (newHoverValue: any) => {
         setHoverValue(newHoverValue)
     };
 
@@ -23,7 +24,7 @@ function ReviewForm() {
     return (
         <>
         <Text>Enter rating out of 5 stars:</Text>
-        <Container>
+        <Container style={styles.stars}>
             {stars.map((_, index) => {
                 return (
                     <FaStar
@@ -32,7 +33,7 @@ function ReviewForm() {
                         onClick={() => handleClick(index + 1)}
                         onMouseOver={() => handleMouseOver(index + 1)}
                         onMouseLeave={handleMouseLeave}
-                        color={(hoverValue || currentValue) > index ? theme.colors.yellow : theme.colors.gray}
+                        color={(hoverValue || currentValue) > index ? theme.colors.yellow[0] : theme.colors.gray[0]}
                         style={{
                         marginRight: 10,
                         cursor: "pointer"
@@ -50,6 +51,13 @@ function ReviewForm() {
         <Button>Submit</Button>
         </>
     );
+}
+
+const styles = {
+    stars: {
+        display: "flex",
+        flexdirection: "row"
+    }
 }
 
 export default ReviewForm;
