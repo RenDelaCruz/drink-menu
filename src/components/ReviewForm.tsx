@@ -1,4 +1,4 @@
-import { Textarea, Input, Container, Text, Button, useMantineTheme } from '@mantine/core';
+import { Textarea, Input, Container, Text, Button, useMantineTheme, Center } from '@mantine/core';
 import { useState } from 'react';
 import { FaStar } from 'react-icons/fa';
 import { FileX } from 'tabler-icons-react';
@@ -23,7 +23,10 @@ function ReviewForm() {
 
     return (
         <>
-        <Text>Enter rating out of 5 stars:</Text>
+        <Center>
+            <Text>Enter rating out of 5 stars:</Text>
+        </Center>
+        <Center>
         <Container style={styles.stars}>
             {stars.map((_, index) => {
                 return (
@@ -33,7 +36,7 @@ function ReviewForm() {
                         onClick={() => handleClick(index + 1)}
                         onMouseOver={() => handleMouseOver(index + 1)}
                         onMouseLeave={handleMouseLeave}
-                        color={(hoverValue || currentValue) > index ? theme.colors.yellow[0] : theme.colors.gray[0]}
+                        color={(hoverValue || currentValue) > index ? theme.colors.yellow[4] : theme.colors.gray[7]}
                         style={{
                         marginRight: 10,
                         cursor: "pointer"
@@ -42,6 +45,7 @@ function ReviewForm() {
                 )
             })}
         </Container>
+        </Center>   
         <Text>Comments:</Text>
         <Textarea
             placeholder='Tell us your feedback'

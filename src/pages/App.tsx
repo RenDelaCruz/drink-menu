@@ -2,6 +2,7 @@ import { ColorScheme, ColorSchemeProvider, MantineProvider } from '@mantine/core
 import { useState } from 'react';
 import MainMenu from './MainMenu';
 import IndividualDrink from './IndividualDrink';
+import DrinkReview from './DrinkReview';
 
 function App() {
   const [colorScheme, setColorScheme] = useState<ColorScheme>('light');
@@ -18,7 +19,7 @@ function App() {
         }}
         withGlobalStyles
       >
-        <MainMenu />
+        <DrinkReview />
       </MantineProvider>
     </ColorSchemeProvider>
   );
