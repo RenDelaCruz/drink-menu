@@ -3,8 +3,8 @@ import DrinkHeader from '../components/DrinkHeader';
 import DrinkInfo from '../components/DrinkInfo';
 import FoodPairs from '../components/FoodPairs';
 import ItemReview from '../components/ItemReview';
+import StartRating from '../components/StartRating';
 import Margarita from '../images/Margarita.jpg';
-import Stars from '../images/Stars.jpg';
 
 function IndividualDrink() {
   return (
@@ -15,7 +15,7 @@ function IndividualDrink() {
           <Title order={1}>Margarita</Title>
         </Center>
         <Center>
-          <Image src={Stars} width={200} height={100} />
+          <StartRating rating={5} />
         </Center>
         <Group position='apart'>
           <Image src={Margarita} width={400} height={400} fit='contain' />

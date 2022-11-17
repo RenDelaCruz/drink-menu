@@ -1,6 +1,7 @@
 import { ActionIcon, Badge, Card, createStyles, Grid, Group, Image, Text } from '@mantine/core';
 import { useNavigate } from 'react-router-dom';
 import { Heart } from 'tabler-icons-react';
+import StarRating from './StartRating';
 
 const useStyles = createStyles((theme) => ({
   card: {
@@ -51,6 +52,7 @@ function DrinkCard({ image, category, title, price }: DrinkCardProps) {
           <Text weight={300} size={40} className={classes.title} mt='xs'>
             {title}
           </Text>
+          <StarRating rating={4} />
 
           {/* <Group mt='lg'>
           <i className='fa-solid fa-martini-glass-citrus'></i>

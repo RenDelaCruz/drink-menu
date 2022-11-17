@@ -1,22 +1,20 @@
-import { Button, Container, Image, Modal, Space, Stack, Text, Title } from '@mantine/core';
+import { Button, Container, Modal, Space, Stack, Text, Title } from '@mantine/core';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import Stars from '../images/Stars.jpg';
 import ReviewForm from './ReviewForm';
+import StarRating from './StartRating';
 
 function DrinkInfo() {
-  const navigate = useNavigate();
   const [opened, setOpened] = useState(false);
   return (
     <Container
       size={400}
       px={10}
-      sx={{
-        backgroundColor: '#ced4da',
+      sx={(theme) => ({
+        backgroundColor: theme.colorScheme === 'dark' ? theme.colors.gray[8] : '#ced4da',
         borderRadius: 4,
         borderColor: '#000000',
         borderStyle: 'solid',
-      }}
+      })}
     >
       <Modal
         opened={opened}
@@ -41,10 +39,10 @@ function DrinkInfo() {
       <Stack justify='space-between'>
         <Title>Reviews</Title>
         <Space h='sm' />
-        <Image src={Stars} width={200} height={50} />
+        <StarRating rating={5} />
         <Text>Refreshing and love the citrus flavour.</Text>
         <Space h='sm' />
-        <Image src={Stars} width={200} height={50} />
+        <StarRating rating={5} />
         <Text>Perfect balance of sweet, sour and spicy.</Text>
         <Space h='xl' />
         <Button onClick={() => setOpened(true)}>Leave a Review</Button>
