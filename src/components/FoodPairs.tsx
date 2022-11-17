@@ -1,7 +1,7 @@
-import { Group, Container, Title, Button, Space, Image, Text, Stack } from '@mantine/core';
-import JerkChicken from '../Images/JerkChicken.jpg';
-import ShrimpCakes from '../Images/ShrimpCakes.jpg';
-import Enchiladas from '../Images/Enchiladas.jpg';
+import { Container, Group, Image, Stack, Text, Title } from '@mantine/core';
+import Enchiladas from '../images/Enchiladas.jpg';
+import JerkChicken from '../images/JerkChicken.jpg';
+import ShrimpCakes from '../images/ShrimpCakes.jpg';
 
 
 function FoodPairs() {

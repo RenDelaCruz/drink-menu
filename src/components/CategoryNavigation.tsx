@@ -25,7 +25,7 @@ type CategoryNavigationProps = {
 const categories = [
   {
     name: 'Cocktails',
-    icon: <i className="fa-solid fa-martini-glass-citrus"></i>,
+    icon: <i className='fa-solid fa-martini-glass-citrus'></i>,
   },
   {
     name: 'Beer',
@@ -33,15 +33,15 @@ const categories = [
   },
   {
     name: 'Wine',
-    icon: <i className="fa-solid fa-wine-bottle"></i>,
+    icon: <i className='fa-solid fa-wine-bottle'></i>,
   },
   {
     name: 'Spirits',
-    icon: <i className="fa-solid fa-whiskey-glass"></i>,
+    icon: <i className='fa-solid fa-whiskey-glass'></i>,
   },
   {
     name: 'Liqueurs',
-    icon: <i className="fa-solid fa-bottle-droplet"></i>,
+    icon: <i className='fa-solid fa-bottle-droplet'></i>,
   },
 ];
 

@@ -1,4 +1,4 @@
-import { Container, Text, List, Space } from '@mantine/core';
+import { Container, List, Space, Text } from '@mantine/core';
 
 function DrinkInfo () {
     return (
