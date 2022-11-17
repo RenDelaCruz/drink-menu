@@ -12,11 +12,9 @@ import {
   useMantineTheme,
 } from '@mantine/core';
 import { Dispatch, SetStateAction } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Checklist, Heart } from 'tabler-icons-react';
 import ThemeToggle from './ThemeToggle';
-
-const logo =
-  'https://cdn.dribbble.com/users/1997979/screenshots/5669251/media/625a493551da2420002c7c51eff1943e.jpg';
 
 const useStyles = createStyles((theme) => ({
   spacedHeader: {
@@ -46,6 +44,7 @@ type HeaderProps = {
 function Header({ opened, setOpened, ...headerProps }: HeaderProps) {
   const theme = useMantineTheme();
   const { classes } = useStyles();
+  const navigate = useNavigate();
 
   return (
     <MantineHeader className={classes.blur} {...headerProps}>
@@ -59,7 +58,7 @@ function Header({ opened, setOpened, ...headerProps }: HeaderProps) {
           />
         </MediaQuery>
         <Group spacing='xs'>
-          <MediaQuery smallerThan={350} styles={{ display: 'none' }}>
+          <MediaQuery smallerThan='sm' styles={{ display: 'none' }}>
             <ThemeIcon
               size={'xl'}
               // sx={(theme) => ({
@@ -83,12 +82,30 @@ function Header({ opened, setOpened, ...headerProps }: HeaderProps) {
           </Text>
         </Group>
         <Group>
-          <Button variant='filled' leftIcon={<Heart strokeWidth={2} />}>
-            Favourites
-          </Button>
-          <Button variant='filled' leftIcon={<Checklist strokeWidth={2} />}>
-            Recommend a Drink
-          </Button>
+          <MediaQuery smallerThan='sm' styles={{ display: 'none' }}>
+            <Group>
+              <Button variant='filled' leftIcon={<Heart strokeWidth={2} />}>
+                Favourites
+              </Button>
+              <Button
+                variant='filled'
+                leftIcon={<Checklist strokeWidth={2} />}
+                onClick={() => navigate('/recommend')}
+              >
+                Recommend a Drink
+              </Button>
+            </Group>
+          </MediaQuery>
+          <MediaQuery largerThan='sm' styles={{ display: 'none' }}>
+            <Group>
+              <ThemeIcon size={'xl'}>
+                <Heart strokeWidth={2} />
+              </ThemeIcon>
+              <ThemeIcon size={'xl'} onClick={() => navigate('/recommend')}>
+                <Checklist strokeWidth={2} />
+              </ThemeIcon>
+            </Group>
+          </MediaQuery>
           <ThemeToggle />
         </Group>
       </Container>
