@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import ReviewForm from '../components/ReviewForm';
 import IndividualDrink from './IndividualDrink';
 import MainMenu from './MainMenu';
+import Recommendation from './Recommendation';
 
 function App() {
   const [colorScheme, setColorScheme] = useState<ColorScheme>('light');
@@ -25,6 +26,7 @@ function App() {
             <Route path='/' element={<MainMenu />} />
             <Route path='/margarita' element={<IndividualDrink />} />
             <Route path='/margarita/review' element={<ReviewForm />} />
+            <Route path='/recommend' element={<Recommendation />} />
           </Routes>
         </Router>
       </MantineProvider>

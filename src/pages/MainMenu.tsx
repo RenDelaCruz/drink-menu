@@ -2,7 +2,7 @@ import { AppShell } from '@mantine/core';
 import { useState } from 'react';
 import CategoryNavigation from '../components/CategoryNavigation';
 import Feed from '../components/Feed';
-import Header from '../components/Header';
+import MainHeader from '../components/MainHeader';
 
 function MainMenu() {
   const [opened, setOpened] = useState(false);
@@ -11,7 +11,7 @@ function MainMenu() {
     <AppShell
       navbarOffsetBreakpoint='sm'
       fixed
-      header={<Header opened={opened} setOpened={setOpened} height={90} padding='md' />}
+      header={<MainHeader opened={opened} setOpened={setOpened} height={90} padding='md' />}
       navbar={
         <CategoryNavigation
           padding='md'

@@ -1,7 +1,15 @@
 import { Text } from '@mantine/core';
+import DrinkHeader from '../components/DrinkHeader';
 
 function Recommendation() {
-  return <Text>Recommendation page</Text>;
+  return (
+    <>
+      <DrinkHeader backButtonPath='/' />
+      <div style={{ padding: 10, marginTop: 120 }}>
+        <Text>Recommendation page</Text>
+      </div>
+    </>
+  );
 }
 
 export default Recommendation;

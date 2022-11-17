@@ -9,7 +9,6 @@ const useStyles = createStyles((theme) => ({
 
   padded: {
     padding: '20px 50px',
-    // border: '1px solid black'
   },
 }));
 

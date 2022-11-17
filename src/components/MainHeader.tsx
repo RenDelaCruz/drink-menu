@@ -1,4 +1,5 @@
 import {
+  ActionIcon,
   Burger,
   Button,
   Container,
@@ -8,7 +9,6 @@ import {
   MantineNumberSize,
   MediaQuery,
   Text,
-  ThemeIcon,
   useMantineTheme,
 } from '@mantine/core';
 import { Dispatch, SetStateAction } from 'react';
@@ -34,14 +34,14 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-type HeaderProps = {
+type MainHeaderProps = {
   opened: boolean;
   setOpened: Dispatch<SetStateAction<boolean>>;
   height: number;
   padding: MantineNumberSize;
 };
 
-function Header({ opened, setOpened, ...headerProps }: HeaderProps) {
+function MainHeader({ opened, setOpened, ...headerProps }: MainHeaderProps) {
   const theme = useMantineTheme();
   const { classes } = useStyles();
   const navigate = useNavigate();
@@ -58,17 +58,6 @@ function Header({ opened, setOpened, ...headerProps }: HeaderProps) {
           />
         </MediaQuery>
         <Group spacing='xs'>
-          <MediaQuery smallerThan='sm' styles={{ display: 'none' }}>
-            <ThemeIcon
-              size={'xl'}
-              // sx={(theme) => ({
-              //   backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[0] : '#fff',
-              // })}
-              sx={{ background: 'none' }}
-            >
-              {/* <Image width={55} src={logo} alt='logo' /> */}
-            </ThemeIcon>
-          </MediaQuery>
           <Text
             size={30}
             weight={'bold'}
@@ -76,6 +65,7 @@ function Header({ opened, setOpened, ...headerProps }: HeaderProps) {
               fontFamily: 'Cambria, serif',
               borderBottom: theme.colorScheme === 'dark' ? '2px dotted grey' : '2px dotted black',
               borderTop: theme.colorScheme === 'dark' ? '2px dotted grey' : '2px dotted black',
+              [theme.fn.largerThan('sm')]: { marginLeft: 50 },
             })}
           >
             THE · ALCOVE
@@ -98,12 +88,17 @@ function Header({ opened, setOpened, ...headerProps }: HeaderProps) {
           </MediaQuery>
           <MediaQuery largerThan='sm' styles={{ display: 'none' }}>
             <Group>
-              <ThemeIcon size={'xl'}>
+              <ActionIcon size={'lg'} variant='filled' color='teal'>
                 <Heart strokeWidth={2} />
-              </ThemeIcon>
-              <ThemeIcon size={'xl'} onClick={() => navigate('/recommend')}>
+              </ActionIcon>
+              <ActionIcon
+                size={'lg'}
+                onClick={() => navigate('/recommend')}
+                variant='filled'
+                color='teal'
+              >
                 <Checklist strokeWidth={2} />
-              </ThemeIcon>
+              </ActionIcon>
             </Group>
           </MediaQuery>
           <ThemeToggle />
@@ -113,4 +108,4 @@ function Header({ opened, setOpened, ...headerProps }: HeaderProps) {
   );
 }
 
-export default Header;
+export default MainHeader;
