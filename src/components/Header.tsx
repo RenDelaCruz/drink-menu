@@ -25,7 +25,15 @@ const useStyles = createStyles((theme) => ({
     justifyContent: 'space-between',
     alignItems: 'center',
     height: '100%',
-    backgroundColor: '#F6F5F6',
+    // backgroundColor: '#F6F5F6',
+    // borderBottom: '2px solid #1CAD73'
+  },
+
+  blur: {
+    background: theme.colorScheme === 'dark' ? 'rgba(30, 30, 30, 0.8)' : 'rgba(255, 255, 255, 0.8)',
+    boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
+    backdropFilter: 'saturate(180%) blur(10px)',
+    webkitBackdropFilter: 'saturate(180%) blur(10px)',
   },
 }));
 
@@ -41,7 +49,7 @@ function Header({ opened, setOpened, ...headerProps }: HeaderProps) {
   const { classes } = useStyles();
 
   return (
-    <MantineHeader {...headerProps}>
+    <MantineHeader className={classes.blur} {...headerProps}>
       <Container className={classes.spacedHeader} fluid>
         <MediaQuery largerThan='sm' styles={{ display: 'none' }}>
           <Burger
