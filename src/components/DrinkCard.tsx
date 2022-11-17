@@ -13,6 +13,8 @@ const useStyles = createStyles((theme) => ({
       top: -5,
     },
     cursor: 'pointer',
+    borderWidth: 2,
+    boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
   },
 
   title: {

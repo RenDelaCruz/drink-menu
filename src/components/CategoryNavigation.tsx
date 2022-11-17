@@ -1,4 +1,13 @@
-import { Container, createStyles, MantineNumberSize, Navbar } from '@mantine/core';
+import {
+  Button,
+  Container,
+  createStyles,
+  Group,
+  Input,
+  MantineNumberSize,
+  Navbar,
+} from '@mantine/core';
+import { AdjustmentsHorizontal, Download, Search } from 'tabler-icons-react';
 import CategoryButton from './CategoryButton';
 
 const useStyles = createStyles((theme) => ({
@@ -51,6 +60,13 @@ function CategoryNavigation({ ...navbarProps }: CategoryNavigationProps) {
   return (
     <Navbar className={classes.noBorder} {...navbarProps}>
       <Container className={classes.padded}>
+        <Container sx={{ margin: '10px 0 20px 0', padding: 0 }}>
+          <Input icon={<Search />} placeholder='Search' />
+          <Group grow sx={{ marginTop: 20 }}>
+            <Button leftIcon={<AdjustmentsHorizontal />}>Filter</Button>
+            <Button leftIcon={<Download />}>Download</Button>
+          </Group>
+        </Container>
         {categories.map((category) => (
           <CategoryButton leftIcon={category.icon}>{category.name}</CategoryButton>
         ))}
