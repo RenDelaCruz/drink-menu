@@ -22,8 +22,16 @@ function DrinkInfo() {
         opened={opened}
         onClose={() => setOpened(false)}
         title={
-          <Text fz={30} fw={900}>
-            Drink Review
+          <Text
+            size={30}
+            weight={'bold'}
+            sx={(theme) => ({
+              fontFamily: 'Cambria, serif',
+              borderBottom: theme.colorScheme === 'dark' ? '2px dotted grey' : '2px dotted black',
+              borderTop: theme.colorScheme === 'dark' ? '2px dotted grey' : '2px dotted black',
+            })}
+          >
+            DRINK · REVIEW
           </Text>
         }
       >
