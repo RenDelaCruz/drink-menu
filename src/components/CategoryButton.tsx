@@ -5,6 +5,7 @@ const useStyles = createStyles((theme) => ({
     marginTop: 20,
     width: '100%',
     height: 75,
+    border: '0.01px solid' 
   },
 }));
 

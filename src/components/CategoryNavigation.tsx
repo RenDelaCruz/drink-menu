@@ -4,7 +4,7 @@ import CategoryButton from './CategoryButton';
 const useStyles = createStyles((theme) => ({
   noBorder: {
     border: 'none',
-    background: 'none'
+    [theme.fn.largerThan('sm')]: { background: 'none' },
   },
 
   padded: {

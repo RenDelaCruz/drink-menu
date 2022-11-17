@@ -14,7 +14,7 @@ const useStyles = createStyles((theme) => ({
     padding: `${theme.spacing.xs}px ${theme.spacing.lg}px`,
     marginTop: theme.spacing.md,
     borderTop: `1px solid ${
-      theme.colorScheme === 'dark' ? theme.colors.dark[5] : theme.colors.gray[2]
+      theme.colorScheme === 'dark' ? theme.colors.dark[4] : theme.colors.gray[2]
     }`,
   },
 }));
@@ -42,9 +42,9 @@ function DrinkCard({ image, category, title, price }: DrinkCardProps) {
           {title}
         </Text>
 
-        <Group mt='lg'>
+        {/* <Group mt='lg'>
           <i className='fa-solid fa-martini-glass-citrus'></i>
-        </Group>
+        </Group> */}
 
         <Card.Section className={classes.footer}>
           <Group position='apart'>
