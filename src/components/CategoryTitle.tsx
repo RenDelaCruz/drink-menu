@@ -1,12 +1,6 @@
 import { createStyles, Text } from '@mantine/core';
 
-const useStyles = createStyles((theme) => ({
-  button: {
-    marginTop: 20,
-    width: '100%',
-    height: 75,
-  },
-}));
+const useStyles = createStyles((theme) => ({}));
 
 type CategoryTitleProps = {
   children: string;

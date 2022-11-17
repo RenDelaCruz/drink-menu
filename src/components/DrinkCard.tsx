@@ -3,7 +3,7 @@ import { Heart } from 'tabler-icons-react';
 
 const useStyles = createStyles((theme) => ({
   card: {
-    backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.white,
+    backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[5] : theme.colors.gray[0],
   },
 
   title: {
@@ -38,7 +38,7 @@ function DrinkCard({ image, category, title, price }: DrinkCardProps) {
 
         <Badge>{category}</Badge>
 
-        <Text weight={700} className={classes.title} mt='xs'>
+        <Text weight={300} size={40} className={classes.title} mt='xs'>
           {title}
         </Text>
 
@@ -52,7 +52,7 @@ function DrinkCard({ image, category, title, price }: DrinkCardProps) {
               {price}
             </Text>
             <ActionIcon>
-              <Heart strokeWidth={2} color='red' />
+              <Heart strokeWidth={1} color='red' />
             </ActionIcon>
           </Group>
         </Card.Section>
