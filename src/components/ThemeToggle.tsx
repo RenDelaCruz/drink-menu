@@ -10,7 +10,7 @@ export function ThemeToggle() {
 
   return (
     <ActionIcon
-      variant='outline'
+      variant='filled'
       color={colorScheme === 'dark' ? '' : 'teal'}
       onClick={() => toggleColorScheme()}
       size='lg'

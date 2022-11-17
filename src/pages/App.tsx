@@ -18,7 +18,8 @@ function App() {
         }}
         withGlobalStyles
       >
-        <IndividualDrink />
+        <MainMenu />
+        {/* <IndividualDrink /> */}
       </MantineProvider>
     </ColorSchemeProvider>
   );

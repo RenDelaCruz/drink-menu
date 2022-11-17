@@ -62,15 +62,15 @@ function Header({ opened, setOpened, ...headerProps }: HeaderProps) {
               <Image width={55} src={logo} alt='logo' />
             </ThemeIcon>
           </MediaQuery>
-          <Text size='xl' weight={'bold'}>
+          <Text size={30} weight={'bold'}>
             The Alcove
           </Text>
         </Group>
         <Group>
-          <Button variant='outline' leftIcon={<Heart strokeWidth={2} />}>
+          <Button variant='filled' leftIcon={<Heart strokeWidth={2} />}>
             Favourites
           </Button>
-          <Button variant='outline' leftIcon={<Checklist strokeWidth={2} />}>
+          <Button variant='filled' leftIcon={<Checklist strokeWidth={2} />}>
             Recommend a Drink
           </Button>
           <ThemeToggle />
