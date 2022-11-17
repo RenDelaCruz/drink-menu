@@ -5,7 +5,6 @@ import {
   createStyles,
   Group,
   Header as MantineHeader,
-  Image,
   MantineNumberSize,
   MediaQuery,
   Text,
@@ -63,15 +62,24 @@ function Header({ opened, setOpened, ...headerProps }: HeaderProps) {
           <MediaQuery smallerThan={350} styles={{ display: 'none' }}>
             <ThemeIcon
               size={'xl'}
-              sx={(theme) => ({
-                backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[0] : '#fff',
-              })}
+              // sx={(theme) => ({
+              //   backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[0] : '#fff',
+              // })}
+              sx={{ background: 'none' }}
             >
-              <Image width={55} src={logo} alt='logo' />
+              {/* <Image width={55} src={logo} alt='logo' /> */}
             </ThemeIcon>
           </MediaQuery>
-          <Text size={30} weight={'bold'}>
-            The Alcove
+          <Text
+            size={30}
+            weight={'bold'}
+            sx={(theme) => ({
+              fontFamily: 'Cambria, serif',
+              borderBottom: theme.colorScheme === 'dark' ? '2px dotted grey' : '2px dotted black',
+              borderTop: theme.colorScheme === 'dark' ? '2px dotted grey' : '2px dotted black',
+            })}
+          >
+            THE · ALCOVE
           </Text>
         </Group>
         <Group>
