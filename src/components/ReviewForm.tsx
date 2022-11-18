@@ -24,6 +24,7 @@ function ReviewForm({ handleAddReview }: ReviewFormProps) {
   const email = useRef<any>(null);
   const [isCommentEmpty, setIsCommentEmpty] = useState(false);
   const [isEmailEmpty, setIsEmailEmpty] = useState(false);
+  const [isMissingAtSign, setIsMissingAtSign] = useState(false);
 
   const handleClick = (value: any) => {
     setCurrentValue(value);
@@ -42,13 +43,21 @@ function ReviewForm({ handleAddReview }: ReviewFormProps) {
     const commentValue: any = comment?.current?.value || null;
     const selectedRating = currentValue;
 
-    if (!commentValue && !emailValue) {
+    if (!commentValue && (!emailValue || !emailValue.includes('@'))) {
       setIsCommentEmpty(true);
-      setIsEmailEmpty(true);
+
+      if (!emailValue) {
+        setIsEmailEmpty(true);
+        setIsMissingAtSign(false);
+      } else {
+        setIsMissingAtSign(true);
+        setIsEmailEmpty(false);
+      }
       return;
     } else {
       setIsCommentEmpty(false);
       setIsEmailEmpty(false);
+      setIsMissingAtSign(false);
     }
 
     if (!commentValue) {
@@ -63,6 +72,13 @@ function ReviewForm({ handleAddReview }: ReviewFormProps) {
       return;
     } else {
       setIsEmailEmpty(false);
+    }
+
+    if (!emailValue.includes('@')) {
+      setIsMissingAtSign(true);
+      return;
+    } else {
+      setIsMissingAtSign(false);
     }
 
     if (handleAddReview) {
@@ -114,7 +130,13 @@ function ReviewForm({ handleAddReview }: ReviewFormProps) {
         ref={email}
         type='text'
         placeholder='your@email.com'
-        error={isEmailEmpty ? 'Email cannot be empty' : false}
+        error={
+          isEmailEmpty
+            ? 'Email cannot be empty'
+            : isMissingAtSign
+            ? 'Enter a valid email address'
+            : false
+        }
       ></TextInput>
       <Button onClick={handleSubmit} sx={{ marginTop: 25 }}>
         Submit

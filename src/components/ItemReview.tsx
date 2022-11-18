@@ -8,8 +8,9 @@ import ReviewForm from './ReviewForm';
 const useStyles = createStyles((theme) => ({
   card: {
     backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[5] : theme.colors.gray[1],
-    height: 'auto',
+    minHeight: '100vh',
     width: 350,
+    top: 0,
   },
 }));
 
