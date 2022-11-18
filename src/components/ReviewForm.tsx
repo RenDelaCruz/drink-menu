@@ -27,9 +27,12 @@ function ReviewForm({ handleAddReview }: ReviewFormProps) {
   };
 
   const handleSubmit = () => {
-    alert(`${email?.current?.value}, ${comment?.current?.value}, ${currentValue} stars`);
     if (handleAddReview) {
-      handleAddReview();
+      handleAddReview({
+        email: email?.current?.value,
+        comment: comment?.current?.value,
+        selectedRating: currentValue,
+      });
     }
   };
 

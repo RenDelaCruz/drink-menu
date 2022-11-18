@@ -1,4 +1,5 @@
 import { Button, Card, createStyles, Modal, ScrollArea, Stack, Text } from '@mantine/core';
+import { useLocalStorage } from '@mantine/hooks';
 import { useState } from 'react';
 import { Pencil } from 'tabler-icons-react';
 import ReviewComment from './ReviewComment';
@@ -15,9 +16,26 @@ const useStyles = createStyles((theme) => ({
 function DrinkInfo() {
   const { classes } = useStyles();
   const [opened, setOpened] = useState(false);
+  const [reviews, setReviews] = useLocalStorage<Array<any>>({ key: 'reviews', defaultValue: [] });
 
-  function handleAddReview() {
-    setOpened(false)
+  function handleAddReview({
+    email = null,
+    comment = null,
+    selectedRating = null,
+  }: {
+    email: any;
+    comment: any;
+    selectedRating: any;
+  }) {
+    setOpened(false);
+    setReviews((prevReviews) => [
+      ...prevReviews,
+      {
+        email,
+        comment,
+        selectedRating,
+      },
+    ]);
   }
 
   return (
@@ -40,6 +58,13 @@ function DrinkInfo() {
           <ReviewComment email='jesse.pinkman@gmail.com' rating={5}>
             Perfect balance of sweet, sour and spicy
           </ReviewComment>
+          {reviews.map((review, id) => (
+            <div key={id}>
+              <ReviewComment email={review.email} rating={review.selectedRating}>
+                {review.comment}
+              </ReviewComment>
+            </div>
+          ))}
         </ScrollArea>
       </Stack>
     </Card>
