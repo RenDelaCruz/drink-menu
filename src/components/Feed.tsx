@@ -18,7 +18,9 @@ function Feed({}: FeedProps) {
     <Container className={classes.container}>
       {info.map(({ category, drinks }) => (
         <>
-          <CategoryTitle>{category}</CategoryTitle>
+          <div id={category}>
+            <CategoryTitle>{category}</CategoryTitle>
+          </div>
           <Grid>
             {drinks.map((drink) => (
               <DrinkCard
