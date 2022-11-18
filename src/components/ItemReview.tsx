@@ -42,7 +42,7 @@ function DrinkInfo() {
       title: 'Success',
       message: 'Your review comment was added',
       icon: <Check />,
-      autoClose: 4000,
+      autoClose: 5000,
     });
   }
 
