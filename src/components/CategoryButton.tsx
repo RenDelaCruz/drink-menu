@@ -11,15 +11,32 @@ const useStyles = createStyles((theme) => ({
 
 type CategoryButtonProps = {
   leftIcon?: any;
-  children: any;
+  children: string;
 };
 
 function CategoryButton({ leftIcon, children }: CategoryButtonProps) {
   const { classes } = useStyles();
 
+  function handleScroll() {
+    const id = children;
+    const yOffset = -100;
+    const element = document.getElementById(id);
+    if (element !== null) {
+      const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+  }
+
   return (
-    <Button className={classes.button} leftIcon={leftIcon} variant='light' radius='xl' size='lg'>
-      {children}
+    <Button
+      className={classes.button}
+      leftIcon={leftIcon}
+      variant='light'
+      radius='xl'
+      size='lg'
+      onClick={handleScroll}
+    >
+      {children.charAt(0).toUpperCase() + children.slice(1)}
     </Button>
   );
 }

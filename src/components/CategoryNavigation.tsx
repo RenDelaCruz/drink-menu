@@ -33,23 +33,23 @@ type CategoryNavigationProps = {
 
 const categories = [
   {
-    name: 'Cocktails',
+    name: 'cocktails',
     icon: <i className='fa-solid fa-martini-glass-citrus'></i>,
   },
   {
-    name: 'Beer',
+    name: 'beer',
     icon: <i className='fa-solid fa-beer-mug-empty'></i>,
   },
   {
-    name: 'Wine',
+    name: 'wine',
     icon: <i className='fa-solid fa-wine-bottle'></i>,
   },
   {
-    name: 'Spirits',
+    name: 'spirits',
     icon: <i className='fa-solid fa-whiskey-glass'></i>,
   },
   {
-    name: 'Liqueurs',
+    name: 'liqueurs',
     icon: <i className='fa-solid fa-bottle-droplet'></i>,
   },
 ];
@@ -60,7 +60,7 @@ function CategoryNavigation({ ...navbarProps }: CategoryNavigationProps) {
   return (
     <Navbar className={classes.noBorder} {...navbarProps}>
       <Container className={classes.padded}>
-        <Container sx={{ margin: '10px 0 20px 0', padding: 0 }}>
+        <Container sx={{ margin: '15px 0 20px 0', padding: 0 }}>
           <Input icon={<Search />} placeholder='Search' />
           <Group grow sx={{ marginTop: 20 }}>
             <Button leftIcon={<AdjustmentsHorizontal />}>Filter</Button>

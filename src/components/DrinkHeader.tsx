@@ -9,8 +9,9 @@ import {
   Text,
   useMantineTheme,
 } from '@mantine/core';
+import { useLocalStorage } from '@mantine/hooks';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, HeartPlus } from 'tabler-icons-react';
+import { ArrowLeft, HeartBroken, HeartOff, HeartPlus } from 'tabler-icons-react';
 import ThemeToggle from './ThemeToggle';
 
 const useStyles = createStyles((theme) => ({
@@ -32,22 +33,42 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-function DrinkHeader({ addFavouriteButton = false, backButtonPath = '/', ...headerProps }) {
+interface DrinkHeaderProps {
+  addFavouriteButton?: boolean;
+  handleClear?: any;
+  disableClear?: boolean
+}
+
+function DrinkHeader({
+  addFavouriteButton = false,
+  handleClear = null,
+  disableClear = false,
+  ...headerProps
+}: DrinkHeaderProps) {
   const theme = useMantineTheme();
   const { classes } = useStyles();
   const navigate = useNavigate();
+
+  const [favourited, setFavourited] = useLocalStorage({
+    key: 'Margarita',
+    defaultValue: localStorage.getItem('Margarita') || false,
+  });
+
+  function toggleFavourite() {
+    setFavourited((prevState) => !prevState);
+  }
 
   return (
     <MantineHeader className={classes.blur} {...headerProps} height={90} fixed>
       <Container className={classes.spacedHeader} fluid>
         <Group spacing='xs'>
           <MediaQuery smallerThan='sm' styles={{ display: 'none' }}>
-            <Button leftIcon={<ArrowLeft strokeWidth={2} />} onClick={() => navigate('/')}>
+            <Button leftIcon={<ArrowLeft strokeWidth={2} />} onClick={() => navigate(-1)}>
               Back
             </Button>
           </MediaQuery>
           <MediaQuery largerThan='sm' styles={{ display: 'none' }}>
-            <ActionIcon size={'lg'} variant='filled' color='teal' onClick={() => navigate('/')}>
+            <ActionIcon size={'lg'} variant='filled' color='teal' onClick={() => navigate(-1)}>
               <ArrowLeft strokeWidth={2} />
             </ActionIcon>
           </MediaQuery>
@@ -70,16 +91,35 @@ function DrinkHeader({ addFavouriteButton = false, backButtonPath = '/', ...head
           {addFavouriteButton && (
             <>
               <MediaQuery smallerThan='sm' styles={{ display: 'none' }}>
-                <Button variant='filled' leftIcon={<HeartPlus strokeWidth={2} />}>
-                  Add to Favourites
-                </Button>
+                {favourited ? (
+                  <Button
+                    variant='filled'
+                    leftIcon={<HeartOff strokeWidth={2} />}
+                    onClick={toggleFavourite}
+                  >
+                    Remove from Favourites
+                  </Button>
+                ) : (
+                  <Button
+                    variant='filled'
+                    leftIcon={<HeartPlus strokeWidth={2} />}
+                    onClick={toggleFavourite}
+                  >
+                    Add to Favourites
+                  </Button>
+                )}
               </MediaQuery>
               <MediaQuery largerThan='sm' styles={{ display: 'none' }}>
-                <ActionIcon size={'lg'} variant='filled' color='teal'>
-                  <HeartPlus strokeWidth={2} />
+                <ActionIcon size={'lg'} variant='filled' color='teal' onClick={toggleFavourite}>
+                  {favourited ? <HeartOff strokeWidth={2} /> : <HeartPlus strokeWidth={2} />}
                 </ActionIcon>
               </MediaQuery>
             </>
+          )}
+          {handleClear !== null && (
+            <Button variant='filled' leftIcon={<HeartBroken strokeWidth={2} />} onClick={handleClear} disabled={disableClear}>
+              Clear All Favourites
+            </Button>
           )}
           <ThemeToggle />
         </Group>

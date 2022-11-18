@@ -17,6 +17,7 @@ function CategoryTitle({ children }: CategoryTitleProps) {
       fz={80}
       fw={700}
       mt={20}
+      tt='capitalize'
     >
       {children}
     </Text>

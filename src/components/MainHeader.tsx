@@ -77,7 +77,11 @@ function MainHeader({ opened, setOpened, ...headerProps }: MainHeaderProps) {
         <Group>
           <MediaQuery smallerThan='sm' styles={{ display: 'none' }}>
             <Group>
-              <Button variant='filled' leftIcon={<Heart strokeWidth={2} />}>
+              <Button
+                variant='filled'
+                leftIcon={<Heart strokeWidth={2} />}
+                onClick={() => navigate('/favourites')}
+              >
                 Favourites
               </Button>
               <Button
