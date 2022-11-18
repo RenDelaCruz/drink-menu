@@ -28,7 +28,10 @@ const useStyles = createStyles((theme) => ({
 
   blur: {
     background: theme.colorScheme === 'dark' ? 'rgba(30, 30, 30, 0.8)' : 'rgba(255, 255, 255, 0.8)',
-    boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
+    boxShadow:
+      theme.colorScheme === 'dark'
+        ? '0 -2px 40px rgba(0, 0, 0, 1)'
+        : '0 4px 40px rgba(0, 0, 0, 0.1)',
     backdropFilter: 'saturate(180%) blur(10px)',
     webkitBackdropFilter: 'saturate(180%) blur(10px)',
   },
