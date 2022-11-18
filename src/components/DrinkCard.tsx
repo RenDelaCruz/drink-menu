@@ -1,4 +1,14 @@
-import { ActionIcon, Badge, Card, createStyles, Grid, Group, Image, Text } from '@mantine/core';
+import {
+  ActionIcon,
+  Badge,
+  Card,
+  Container,
+  createStyles,
+  Grid,
+  Group,
+  Image,
+  Text,
+} from '@mantine/core';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Heart } from 'tabler-icons-react';
@@ -60,18 +70,18 @@ function DrinkCard({ image, category, title, price, rating }: DrinkCardProps) {
           <Card.Section mb='sm'>
             <Image src={image} alt={title} height={180} />
           </Card.Section>
-
           <Badge>{category}</Badge>
-
-          <Text weight={300} size={40} className={classes.title} mt='xs'>
+          <Text weight={300} size={40} className={classes.title}>
             {title}
           </Text>
           <StarRating rating={rating} />
-
-          {/* <Group mt='lg'>
-          <i className='fa-solid fa-martini-glass-citrus'></i>
-        </Group> */}
-
+          <Container p={0}>
+            <Text c='dimmed' lineClamp={2} mt={20} size='sm'>
+              {title === 'Margarita'
+                ? 'A margarita is a cocktail made with a blend of tequila, lime juice, orange liqueur, and ice. It is then served in a glass with its rim covered in salt. The result is a perfectly balanced sweet and sour alcoholic beverage, perfect to beat the summer heat.'
+                : 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Atque quia omnis explicabo accusantium totam itaque, ipsa et architecto sapiente fugit.'}
+            </Text>
+          </Container>
           <Card.Section className={classes.footer}>
             <Group position='apart'>
               <Text size='xl' weight={900}>
