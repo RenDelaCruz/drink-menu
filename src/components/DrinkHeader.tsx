@@ -42,12 +42,12 @@ function DrinkHeader({ addFavouriteButton = false, backButtonPath = '/', ...head
       <Container className={classes.spacedHeader} fluid>
         <Group spacing='xs'>
           <MediaQuery smallerThan='sm' styles={{ display: 'none' }}>
-            <Button leftIcon={<ArrowLeft strokeWidth={2} />} onClick={() => navigate('/')}>
+            <Button leftIcon={<ArrowLeft strokeWidth={2} />} onClick={() => navigate(-1)}>
               Back
             </Button>
           </MediaQuery>
           <MediaQuery largerThan='sm' styles={{ display: 'none' }}>
-            <ActionIcon size={'lg'} variant='filled' color='teal' onClick={() => navigate('/')}>
+            <ActionIcon size={'lg'} variant='filled' color='teal' onClick={() => navigate(-1)}>
               <ArrowLeft strokeWidth={2} />
             </ActionIcon>
           </MediaQuery>

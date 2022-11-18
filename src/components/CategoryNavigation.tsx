@@ -60,7 +60,7 @@ function CategoryNavigation({ ...navbarProps }: CategoryNavigationProps) {
   return (
     <Navbar className={classes.noBorder} {...navbarProps}>
       <Container className={classes.padded}>
-        <Container sx={{ margin: '10px 0 20px 0', padding: 0 }}>
+        <Container sx={{ margin: '15px 0 20px 0', padding: 0 }}>
           <Input icon={<Search />} placeholder='Search' />
           <Group grow sx={{ marginTop: 20 }}>
             <Button leftIcon={<AdjustmentsHorizontal />}>Filter</Button>
