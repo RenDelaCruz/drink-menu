@@ -1,7 +1,8 @@
 import { Button, Card, createStyles, Modal, ScrollArea, Stack, Text } from '@mantine/core';
 import { useLocalStorage } from '@mantine/hooks';
+import { showNotification } from '@mantine/notifications';
 import { useState } from 'react';
-import { Pencil } from 'tabler-icons-react';
+import { Check, Pencil } from 'tabler-icons-react';
 import ReviewComment from './ReviewComment';
 import ReviewForm from './ReviewForm';
 
@@ -37,6 +38,12 @@ function DrinkInfo() {
         selectedRating,
       },
     ]);
+    showNotification({
+      title: 'Success',
+      message: 'Your review comment was added',
+      icon: <Check />,
+      autoClose: 4000,
+    });
   }
 
   return (
