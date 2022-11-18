@@ -9,7 +9,7 @@ import Margarita from '../images/Margarita.jpg';
 function IndividualDrink() {
   return (
     <>
-      <DrinkHeader addFavouriteButton backButtonPath='/' />
+      <DrinkHeader addFavouriteButton  />
       <div style={{ padding: 10, marginTop: 120 }}>
         <Center>
           <Title order={1}>Margarita</Title>

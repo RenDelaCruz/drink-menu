@@ -9,8 +9,9 @@ import {
   Text,
   useMantineTheme,
 } from '@mantine/core';
+import { useLocalStorage } from '@mantine/hooks';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, HeartPlus } from 'tabler-icons-react';
+import { ArrowLeft, HeartOff, HeartPlus } from 'tabler-icons-react';
 import ThemeToggle from './ThemeToggle';
 
 const useStyles = createStyles((theme) => ({
@@ -32,10 +33,19 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-function DrinkHeader({ addFavouriteButton = false, backButtonPath = '/', ...headerProps }) {
+function DrinkHeader({ addFavouriteButton = false, ...headerProps }) {
   const theme = useMantineTheme();
   const { classes } = useStyles();
   const navigate = useNavigate();
+
+  const [favourited, setFavourited] = useLocalStorage({
+    key: 'Margarita',
+    defaultValue: localStorage.getItem('Margarita') || false,
+  });
+
+  function toggleFavourite() {
+    setFavourited((prevState) => !prevState);
+  }
 
   return (
     <MantineHeader className={classes.blur} {...headerProps} height={90} fixed>
@@ -70,13 +80,27 @@ function DrinkHeader({ addFavouriteButton = false, backButtonPath = '/', ...head
           {addFavouriteButton && (
             <>
               <MediaQuery smallerThan='sm' styles={{ display: 'none' }}>
-                <Button variant='filled' leftIcon={<HeartPlus strokeWidth={2} />}>
-                  Add to Favourites
-                </Button>
+                {favourited ? (
+                  <Button
+                    variant='filled'
+                    leftIcon={<HeartOff strokeWidth={2} />}
+                    onClick={toggleFavourite}
+                  >
+                    Remove from Favourites
+                  </Button>
+                ) : (
+                  <Button
+                    variant='filled'
+                    leftIcon={<HeartPlus strokeWidth={2} />}
+                    onClick={toggleFavourite}
+                  >
+                    Add to Favourites
+                  </Button>
+                )}
               </MediaQuery>
               <MediaQuery largerThan='sm' styles={{ display: 'none' }}>
-                <ActionIcon size={'lg'} variant='filled' color='teal'>
-                  <HeartPlus strokeWidth={2} />
+                <ActionIcon size={'lg'} variant='filled' color='teal' onClick={toggleFavourite}>
+                  {favourited ? <HeartOff strokeWidth={2} /> : <HeartPlus strokeWidth={2} />}
                 </ActionIcon>
               </MediaQuery>
             </>

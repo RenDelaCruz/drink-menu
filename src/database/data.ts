@@ -23,12 +23,13 @@ type Category = 'cocktails' | 'beer' | 'wine' | 'spirits' | 'liqueurs';
 
 type StarRating = 1 | 2 | 3 | 4 | 5;
 
-interface Drink {
+export interface Drink {
   name: string;
   price: string;
   rating: StarRating;
   image: string;
   volume: string;
+  category: Category;
 }
 
 interface DrinkSection {
@@ -46,6 +47,7 @@ const info: Array<DrinkSection> = [
         rating: 5,
         image: Margarita,
         volume: '1 oz',
+        category: 'cocktails',
       },
       {
         name: 'Negroni',
@@ -53,6 +55,7 @@ const info: Array<DrinkSection> = [
         rating: 4,
         image: Negroni,
         volume: '1 oz',
+        category: 'cocktails',
       },
       {
         name: 'Daiquiri',
@@ -60,6 +63,7 @@ const info: Array<DrinkSection> = [
         rating: 4,
         image: Daiqiri,
         volume: '1 oz',
+        category: 'cocktails',
       },
       {
         name: 'Old Fashioned',
@@ -67,6 +71,7 @@ const info: Array<DrinkSection> = [
         rating: 3,
         image: OldFashioned,
         volume: '1 oz',
+        category: 'cocktails',
       },
       {
         name: 'Piña Colada',
@@ -74,6 +79,7 @@ const info: Array<DrinkSection> = [
         rating: 4,
         image: PinaColada,
         volume: '1 oz',
+        category: 'cocktails',
       },
       {
         name: 'Moscow Mule',
@@ -81,6 +87,7 @@ const info: Array<DrinkSection> = [
         rating: 4,
         image: MoscowMule,
         volume: '1 oz',
+        category: 'cocktails',
       },
     ],
   },
@@ -93,6 +100,7 @@ const info: Array<DrinkSection> = [
         rating: 4,
         image: MolsonCanadian,
         volume: '1 oz',
+        category: 'beer',
       },
       {
         name: 'Guinness',
@@ -100,6 +108,7 @@ const info: Array<DrinkSection> = [
         rating: 4,
         image: Guinness,
         volume: '1 oz',
+        category: 'beer',
       },
       {
         name: 'Heineken',
@@ -107,6 +116,7 @@ const info: Array<DrinkSection> = [
         rating: 4,
         image: Heineken,
         volume: '1 oz',
+        category: 'beer',
       },
       {
         name: 'Belgian Moon',
@@ -114,6 +124,7 @@ const info: Array<DrinkSection> = [
         rating: 4,
         image: BelgianMoon,
         volume: '1 oz',
+        category: 'beer',
       },
       {
         name: 'Strongbow',
@@ -121,6 +132,7 @@ const info: Array<DrinkSection> = [
         rating: 4,
         image: Strongbow,
         volume: '1 oz',
+        category: 'beer',
       },
     ],
   },
@@ -133,6 +145,7 @@ const info: Array<DrinkSection> = [
         rating: 4,
         image: Bousquet,
         volume: '1 oz',
+        category: 'wine',
       },
       {
         name: "Jacob's Creek",
@@ -140,6 +153,7 @@ const info: Array<DrinkSection> = [
         rating: 4,
         image: JacobsCreek,
         volume: '1 oz',
+        category: 'wine',
       },
       {
         name: 'Sandhill',
@@ -147,6 +161,7 @@ const info: Array<DrinkSection> = [
         rating: 4,
         image: Sandhill,
         volume: '1 oz',
+        category: 'wine',
       },
     ],
   },
@@ -159,6 +174,7 @@ const info: Array<DrinkSection> = [
         rating: 4,
         image: GreyGoose,
         volume: '1 oz',
+        category: 'spirits',
       },
       {
         name: 'Bacardi',
@@ -166,6 +182,7 @@ const info: Array<DrinkSection> = [
         rating: 4,
         image: Bacardi,
         volume: '1 oz',
+        category: 'spirits',
       },
       {
         name: 'Chum Churum Soju',
@@ -173,6 +190,7 @@ const info: Array<DrinkSection> = [
         rating: 4,
         image: Soju,
         volume: '1 oz',
+        category: 'spirits',
       },
     ],
   },
@@ -185,6 +203,7 @@ const info: Array<DrinkSection> = [
         rating: 4,
         image: Jagermeister,
         volume: '1 oz',
+        category: 'liqueurs',
       },
       {
         name: 'Licor 43',
@@ -192,6 +211,7 @@ const info: Array<DrinkSection> = [
         rating: 4,
         image: Licor43,
         volume: '1 oz',
+        category: 'liqueurs',
       },
       {
         name: 'Russo Limoncello',
@@ -199,9 +219,12 @@ const info: Array<DrinkSection> = [
         rating: 4,
         image: Limoncello,
         volume: '1 oz',
+        category: 'liqueurs',
       },
     ],
   },
 ];
+
+export const allDrinks = info.map(({ category, drinks }) => drinks).flat(1);
 
 export default info;

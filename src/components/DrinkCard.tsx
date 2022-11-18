@@ -9,7 +9,7 @@ import {
   Image,
   Text,
 } from '@mantine/core';
-import { useState } from 'react';
+import { useLocalStorage } from '@mantine/hooks';
 import { useNavigate } from 'react-router-dom';
 import { Heart } from 'tabler-icons-react';
 import StarRating from './StartRating';
@@ -51,17 +51,29 @@ interface DrinkCardProps {
   price: string;
   rating: 1 | 2 | 3 | 4 | 5;
   volume: string;
+  handleChange?: any;
 }
 
-function DrinkCard({ image, category, title, price, rating, volume }: DrinkCardProps) {
+function DrinkCard({
+  image,
+  category,
+  title,
+  price,
+  rating,
+  volume,
+  handleChange,
+}: DrinkCardProps) {
   const { classes, theme } = useStyles();
   const navigate = useNavigate();
 
-  const [favourited, setFavourited] = useState(false);
+  const [favourited, setFavourited] = useLocalStorage({ key: title, defaultValue: false });
 
   function handleClick(e: any) {
     e.stopPropagation();
     setFavourited((prevState) => !prevState);
+    if (handleChange) {
+      handleChange(title);
+    }
   }
 
   return (

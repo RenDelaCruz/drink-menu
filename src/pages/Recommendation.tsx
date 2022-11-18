@@ -4,7 +4,7 @@ import DrinkHeader from '../components/DrinkHeader';
 function Recommendation() {
   return (
     <>
-      <DrinkHeader backButtonPath='/' />
+      <DrinkHeader />
       <div style={{ padding: 10, marginTop: 120 }}>
         <Text>Recommendation page</Text>
       </div>
