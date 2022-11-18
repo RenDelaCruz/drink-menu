@@ -1,4 +1,4 @@
-import { Center, Container, Grid, Text } from '@mantine/core';
+import { Button, Center, Container, Grid, Group, Modal, Text } from '@mantine/core';
 import { useEffect, useState } from 'react';
 import { HeartBroken } from 'tabler-icons-react';
 import DrinkCard from '../components/DrinkCard';
@@ -19,7 +19,18 @@ function EmptyFavourites() {
 }
 
 function Favourites() {
+  const [opened, setOpened] = useState(false);
   const [favourites, setFavourites] = useState<Array<Drink>>([]);
+
+  function handleClear() {
+    setOpened(true);
+  }
+
+  function clearAll() {
+    setFavourites([]);
+    favourites.forEach((fav) => localStorage.setItem(fav.name, 'false'));
+    setOpened(false);
+  }
 
   function handleChange(title: string) {
     setFavourites((prevArray) => prevArray.filter((e) => e.name !== title));
@@ -39,8 +50,18 @@ function Favourites() {
 
   return (
     <>
-      <DrinkHeader />
-      <div style={{ padding: 10, marginTop: 120 }}>
+      <DrinkHeader handleClear={handleClear} disableClear={favourites.length ? false : true} />
+      <Modal opened={opened} onClose={() => setOpened(false)} title='Clear all favourites?'>
+        <Group mt='xl' grow>
+          <Button variant='default' onClick={() => setOpened(false)}>
+            Cancel
+          </Button>
+          <Button variant='filled' color='red' onClick={clearAll}>
+            Clear All
+          </Button>
+        </Group>
+      </Modal>
+      <div style={{ padding: 10, marginTop: 120, marginBottom: 120 }}>
         <Container>
           <Text sx={{ fontFamily: 'Greycliff CF, sans-serif' }} fz={80} fw={700} tt='capitalize'>
             Favourites

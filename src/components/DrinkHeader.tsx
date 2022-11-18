@@ -11,7 +11,7 @@ import {
 } from '@mantine/core';
 import { useLocalStorage } from '@mantine/hooks';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, HeartOff, HeartPlus } from 'tabler-icons-react';
+import { ArrowLeft, HeartBroken, HeartOff, HeartPlus } from 'tabler-icons-react';
 import ThemeToggle from './ThemeToggle';
 
 const useStyles = createStyles((theme) => ({
@@ -33,7 +33,18 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-function DrinkHeader({ addFavouriteButton = false, ...headerProps }) {
+interface DrinkHeaderProps {
+  addFavouriteButton?: boolean;
+  handleClear?: any;
+  disableClear?: boolean
+}
+
+function DrinkHeader({
+  addFavouriteButton = false,
+  handleClear = null,
+  disableClear = false,
+  ...headerProps
+}: DrinkHeaderProps) {
   const theme = useMantineTheme();
   const { classes } = useStyles();
   const navigate = useNavigate();
@@ -104,6 +115,11 @@ function DrinkHeader({ addFavouriteButton = false, ...headerProps }) {
                 </ActionIcon>
               </MediaQuery>
             </>
+          )}
+          {handleClear !== null && (
+            <Button variant='filled' leftIcon={<HeartBroken strokeWidth={2} />} onClick={handleClear} disabled={disableClear}>
+              Clear All Favourites
+            </Button>
           )}
           <ThemeToggle />
         </Group>
