@@ -1,5 +1,7 @@
 import Daiqiri from '../images/Daiqiri.jpeg';
 import Margarita from '../images/Margarita.jpg';
+import Negroni from '../images/Negroni.jpeg';
+import PinaColada from '../images/PinaColada.jpeg';
 
 type Category = 'cocktails' | 'beer' | 'wine' | 'spirits' | 'liqueurs';
 
@@ -17,24 +19,33 @@ interface DrinkSection {
   drinks: Array<Drink>;
 }
 
-const defaultImage =
-  'https://www.liquor.com/thmb/Lj4-pg4Gn-4t4qJfm4BTYVNMVMY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/__opt__aboutcom__coeus__resources__content_migration__liquor__2018__04__23143458__daiquiri-720x720-recipe-09f1d5665a794eddbbfb997876736136.jpg';
-
 const info: Array<DrinkSection> = [
   {
     category: 'cocktails',
     drinks: [
       {
         name: 'Margarita',
-        price: '$7.10',
+        price: '$9.10',
         rating: 5,
         image: Margarita,
       },
       {
+        name: 'Negroni',
+        price: '$10.70',
+        rating: 4,
+        image: Negroni,
+      },
+      {
         name: 'Daiquiri',
-        price: '$9.05',
+        price: '$12.05',
         rating: 4,
         image: Daiqiri,
+      },
+      {
+        name: 'Piña Colada',
+        price: '$7.05',
+        rating: 4,
+        image: PinaColada,
       },
     ],
   },

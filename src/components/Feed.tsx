@@ -22,6 +22,7 @@ function Feed({}: FeedProps) {
           <Grid>
             {drinks.map((drink) => (
               <DrinkCard
+                key={drink.name}
                 image={drink.image}
                 category={category}
                 title={drink.name}

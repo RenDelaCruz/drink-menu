@@ -16,8 +16,8 @@ const useStyles = createStyles((theme) => ({
     borderWidth: 2,
     boxShadow:
       theme.colorScheme === 'dark'
-        ? '0 -2px 40px rgba(0, 0, 0, 1)'
-        : '0 4px 40px rgba(0, 0, 0, 0.1)',
+        ? '0 -2px 50px rgba(0, 0, 0, 1)'
+        : '0 4px 40px rgba(0, 0, 0, 0.2)',
   },
 
   title: {
