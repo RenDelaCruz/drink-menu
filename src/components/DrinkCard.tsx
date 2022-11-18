@@ -1,4 +1,5 @@
 import { ActionIcon, Badge, Card, createStyles, Grid, Group, Image, Text } from '@mantine/core';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Heart } from 'tabler-icons-react';
 import StarRating from './StartRating';
@@ -45,9 +46,11 @@ function DrinkCard({ image, category, title, price, rating }: DrinkCardProps) {
   const { classes, theme } = useStyles();
   const navigate = useNavigate();
 
+  const [favourited, setFavourited] = useState(false);
+
   function handleClick(e: any) {
     e.stopPropagation();
-    alert('Favourited');
+    setFavourited((prevState) => !prevState);
   }
 
   return (
@@ -75,7 +78,7 @@ function DrinkCard({ image, category, title, price, rating }: DrinkCardProps) {
                 {price}
               </Text>
               <ActionIcon onClick={handleClick} size='lg' variant='subtle' color='red'>
-                <Heart strokeWidth={1} size={90} color='red' />
+                <Heart strokeWidth={1} size={90} color='red' fill={favourited ? 'red' : 'none'} />
               </ActionIcon>
             </Group>
           </Card.Section>
