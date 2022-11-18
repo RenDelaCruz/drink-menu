@@ -1,6 +1,7 @@
 import { Button, Center, Group, Switch, Title } from '@mantine/core';
 import { useState } from 'react';
 import RecommendationList from '../components/RecommendationList';
+import { Box } from '@mantine/core';
 
 function Recommendation() {
   const [state, setState] = useState({
@@ -46,6 +47,7 @@ function Recommendation() {
       <Center>
         <RecommendationList bitter={state.bitter} sweet={state.sweet} />
       </Center>
+      
     </div>
   );
 }
