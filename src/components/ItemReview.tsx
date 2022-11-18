@@ -1,5 +1,6 @@
-import { Button, Card, createStyles, Modal, Stack, Text } from '@mantine/core';
+import { Button, Card, createStyles, Modal, ScrollArea, Stack, Text } from '@mantine/core';
 import { useState } from 'react';
+import { Pencil } from 'tabler-icons-react';
 import ReviewComment from './ReviewComment';
 import ReviewForm from './ReviewForm';
 
@@ -25,13 +26,17 @@ function DrinkInfo() {
         <Text fz={50} tt='capitalize' mb={10}>
           Reviews
         </Text>
-        <Button onClick={() => setOpened(true)}>Leave a Review</Button>
-        <ReviewComment email='walter.white@outlook.com' rating={5}>
-          Refreshing and love the citrus flavour. I definitely recommend.
-        </ReviewComment>
-        <ReviewComment email='jesse.pinkman@gmail.com' rating={5}>
-          Perfect balance of sweet, sour and spicy
-        </ReviewComment>
+        <Button leftIcon={<Pencil />} onClick={() => setOpened(true)}>
+          Leave a Review
+        </Button>
+        <ScrollArea style={{ height: '100vh' }}>
+          <ReviewComment email='walter.white@outlook.com' rating={5}>
+            Refreshing and love the citrus flavour. I definitely recommend.
+          </ReviewComment>
+          <ReviewComment email='jesse.pinkman@gmail.com' rating={5}>
+            Perfect balance of sweet, sour and spicy
+          </ReviewComment>
+        </ScrollArea>
       </Stack>
     </Card>
   );
