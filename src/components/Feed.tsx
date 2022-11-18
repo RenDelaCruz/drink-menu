@@ -5,7 +5,7 @@ import DrinkCard from './DrinkCard';
 
 const useStyles = createStyles((theme) => ({
   container: {
-    // marginTop: 20,
+    marginBottom: 120,
   },
 }));
 
@@ -28,6 +28,7 @@ function Feed({}: FeedProps) {
                 title={drink.name}
                 price={drink.price}
                 rating={drink.rating}
+                volume={drink.volume}
               />
             ))}
           </Grid>

@@ -62,7 +62,7 @@ function CategoryNavigation({ ...navbarProps }: CategoryNavigationProps) {
       <Container className={classes.padded}>
         <Container sx={{ margin: '15px 0 20px 0', padding: 0 }}>
           <Input icon={<Search />} placeholder='Search' />
-          <Group grow sx={{ marginTop: 20 }}>
+          <Group grow sx={{ marginTop: 20 }} >
             <Button leftIcon={<AdjustmentsHorizontal />}>Filter</Button>
             <Button leftIcon={<Download />}>Download</Button>
           </Group>

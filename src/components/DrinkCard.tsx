@@ -50,9 +50,10 @@ interface DrinkCardProps {
   title: string;
   price: string;
   rating: 1 | 2 | 3 | 4 | 5;
+  volume: string;
 }
 
-function DrinkCard({ image, category, title, price, rating }: DrinkCardProps) {
+function DrinkCard({ image, category, title, price, rating, volume }: DrinkCardProps) {
   const { classes, theme } = useStyles();
   const navigate = useNavigate();
 
@@ -70,8 +71,11 @@ function DrinkCard({ image, category, title, price, rating }: DrinkCardProps) {
           <Card.Section mb='sm'>
             <Image src={image} alt={title} height={180} />
           </Card.Section>
-          <Badge>{category}</Badge>
-          <Text weight={300} size={40} className={classes.title}>
+          <Group>
+            <Badge>{category}</Badge>
+            <Badge>{volume}</Badge>
+          </Group>
+          <Text weight={300} size={30} className={classes.title} mt='xs'>
             {title}
           </Text>
           <StarRating rating={rating} />
