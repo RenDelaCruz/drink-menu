@@ -44,6 +44,11 @@ function DrinkCard({ image, category, title, price }: DrinkCardProps) {
   const { classes, theme } = useStyles();
   const navigate = useNavigate();
 
+  function handleClick(e: any) {
+    e.stopPropagation();
+    alert('Favourited');
+  }
+
   return (
     <Grid.Col xs={12} sm={6} lg={6} xl={4}>
       <div onClick={() => navigate('/margarita')}>
@@ -68,8 +73,8 @@ function DrinkCard({ image, category, title, price }: DrinkCardProps) {
               <Text size='xl' weight={900}>
                 {price}
               </Text>
-              <ActionIcon>
-                <Heart strokeWidth={1} color='red' />
+              <ActionIcon onClick={handleClick} size="lg" variant='subtle' color='red'>
+                <Heart strokeWidth={1} size={90} color='red' />
               </ActionIcon>
             </Group>
           </Card.Section>
