@@ -38,9 +38,10 @@ interface DrinkCardProps {
   category: string;
   title: string;
   price: string;
+  rating: 1 | 2 | 3 | 4 | 5;
 }
 
-function DrinkCard({ image, category, title, price }: DrinkCardProps) {
+function DrinkCard({ image, category, title, price, rating }: DrinkCardProps) {
   const { classes, theme } = useStyles();
   const navigate = useNavigate();
 
@@ -62,7 +63,7 @@ function DrinkCard({ image, category, title, price }: DrinkCardProps) {
           <Text weight={300} size={40} className={classes.title} mt='xs'>
             {title}
           </Text>
-          <StarRating rating={4} />
+          <StarRating rating={rating} />
 
           {/* <Group mt='lg'>
           <i className='fa-solid fa-martini-glass-citrus'></i>
@@ -73,7 +74,7 @@ function DrinkCard({ image, category, title, price }: DrinkCardProps) {
               <Text size='xl' weight={900}>
                 {price}
               </Text>
-              <ActionIcon onClick={handleClick} size="lg" variant='subtle' color='red'>
+              <ActionIcon onClick={handleClick} size='lg' variant='subtle' color='red'>
                 <Heart strokeWidth={1} size={90} color='red' />
               </ActionIcon>
             </Group>

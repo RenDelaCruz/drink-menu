@@ -43,6 +43,7 @@ function StarRating({ rating }: StarRatingProps) {
       sx={{
         display: 'flex',
         flexDirection: 'row',
+        padding: 0,
       }}
     >
       {starComponents}
