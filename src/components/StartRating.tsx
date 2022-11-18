@@ -7,9 +7,10 @@ type StarRating = 1 | 2 | 3 | 4 | 5;
 
 type StarRatingProps = {
   rating: StarRating;
+  size?: number;
 };
 
-function StarRating({ rating }: StarRatingProps) {
+function StarRating({ rating, size = 24 }: StarRatingProps) {
   const { classes } = useStyles();
   const theme = useMantineTheme();
 
@@ -17,7 +18,7 @@ function StarRating({ rating }: StarRatingProps) {
   for (let i = 0; i < rating; i++) {
     starComponents.push(
       <FaStar
-        size={24}
+        size={size}
         color={theme.colors.yellow[4]}
         style={{
           marginRight: i === 4 ? 0 : 10,
@@ -29,7 +30,7 @@ function StarRating({ rating }: StarRatingProps) {
   for (let i = 0; i < 5 - rating; i++) {
     starComponents.push(
       <FaStar
-        size={24}
+        size={size}
         color={theme.colorScheme === 'dark' ? theme.colors.gray[5] : theme.colors.gray[7]}
         style={{
           marginRight: i === 4 ? 0 : 10,

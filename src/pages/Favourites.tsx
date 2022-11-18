@@ -63,7 +63,7 @@ function Favourites() {
       </Modal>
       <div style={{ padding: 10, marginTop: 120, marginBottom: 120 }}>
         <Container>
-          <Text sx={{ fontFamily: 'Greycliff CF, sans-serif' }} fz={80} fw={700} tt='capitalize'>
+          <Text fz={80} fw={700} tt='capitalize'>
             Favourites
           </Text>
           <Grid>
