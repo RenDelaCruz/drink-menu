@@ -1,4 +1,12 @@
-import { Button, Center, Container, Input, Text, Textarea, useMantineTheme } from '@mantine/core';
+import {
+  Button,
+  Center,
+  Container,
+  Text,
+  Textarea,
+  TextInput,
+  useMantineTheme,
+} from '@mantine/core';
 import { useRef, useState } from 'react';
 import { FaStar } from 'react-icons/fa';
 
@@ -11,8 +19,11 @@ function ReviewForm({ handleAddReview }: ReviewFormProps) {
   const stars = Array(5).fill(0);
   const [currentValue, setCurrentValue] = useState(0);
   const [hoverValue, setHoverValue] = useState(undefined);
+
   const comment = useRef<any>(null);
   const email = useRef<any>(null);
+  const [isCommentEmpty, setIsCommentEmpty] = useState(false);
+  const [isEmailEmpty, setIsEmailEmpty] = useState(false);
 
   const handleClick = (value: any) => {
     setCurrentValue(value);
@@ -27,11 +38,38 @@ function ReviewForm({ handleAddReview }: ReviewFormProps) {
   };
 
   const handleSubmit = () => {
+    const emailValue: any = email?.current?.value || null;
+    const commentValue: any = comment?.current?.value || null;
+    const selectedRating = currentValue;
+
+    if (!commentValue && !emailValue) {
+      setIsCommentEmpty(true);
+      setIsEmailEmpty(true);
+      return;
+    } else {
+      setIsCommentEmpty(false);
+      setIsEmailEmpty(false);
+    }
+
+    if (!commentValue) {
+      setIsCommentEmpty(true);
+      return;
+    } else {
+      setIsCommentEmpty(false);
+    }
+
+    if (!emailValue) {
+      setIsEmailEmpty(true);
+      return;
+    } else {
+      setIsEmailEmpty(false);
+    }
+
     if (handleAddReview) {
       handleAddReview({
-        email: email?.current?.value,
-        comment: comment?.current?.value,
-        selectedRating: currentValue,
+        email: emailValue,
+        comment: commentValue,
+        selectedRating: selectedRating,
       });
     }
   };
@@ -66,9 +104,18 @@ function ReviewForm({ handleAddReview }: ReviewFormProps) {
         </Container>
       </Center>
       <Text sx={{ marginTop: 25 }}>Comments:</Text>
-      <Textarea ref={comment} placeholder='Tell us your feedback' />
+      <Textarea
+        ref={comment}
+        placeholder='Tell us your feedback'
+        error={isCommentEmpty ? 'Review cannot be empty' : false}
+      />
       <Text sx={{ marginTop: 25 }}>Email:</Text>
-      <Input ref={email} type='text' placeholder='your@email.com'></Input>
+      <TextInput
+        ref={email}
+        type='text'
+        placeholder='your@email.com'
+        error={isEmailEmpty ? 'Email cannot be empty' : false}
+      ></TextInput>
       <Button onClick={handleSubmit} sx={{ marginTop: 25 }}>
         Submit
       </Button>

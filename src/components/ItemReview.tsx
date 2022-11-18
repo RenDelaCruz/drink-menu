@@ -8,7 +8,7 @@ import ReviewForm from './ReviewForm';
 const useStyles = createStyles((theme) => ({
   card: {
     backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[5] : theme.colors.gray[1],
-    height: '100vh',
+    height: 'auto',
     width: 350,
   },
 }));
@@ -51,7 +51,7 @@ function DrinkInfo() {
         <Button leftIcon={<Pencil />} onClick={() => setOpened(true)}>
           Leave a Review
         </Button>
-        <ScrollArea style={{ height: '100vh' }}>
+        <ScrollArea.Autosize maxHeight={'81.5vh'}>
           <ReviewComment email='walter.white@outlook.com' rating={5}>
             Refreshing and love the citrus flavour. I definitely recommend.
           </ReviewComment>
@@ -59,13 +59,11 @@ function DrinkInfo() {
             Perfect balance of sweet, sour and spicy
           </ReviewComment>
           {reviews.map((review, id) => (
-            <div key={id}>
-              <ReviewComment email={review.email} rating={review.selectedRating}>
-                {review.comment}
-              </ReviewComment>
-            </div>
+            <ReviewComment key={id} email={review.email} rating={review.selectedRating}>
+              {review.comment}
+            </ReviewComment>
           ))}
-        </ScrollArea>
+        </ScrollArea.Autosize>
       </Stack>
     </Card>
   );
