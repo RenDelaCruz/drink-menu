@@ -4,10 +4,10 @@ function DrinkInfo() {
   return (
     <Container size={500} px={10}>
       <List size='xl'>
-        <List.Item>9 Oz Total</List.Item>
-        <List.Item>2 Oz Tequila</List.Item>
-        <List.Item>1 Oz Triple Sec (Orange Liquer)</List.Item>
-        <List.Item>1 Oz Lime Juice</List.Item>
+        <List.Item>9 oz Total</List.Item>
+        <List.Item>2 oz Tequila</List.Item>
+        <List.Item>1 oz Triple Sec (Orange Liqueur)</List.Item>
+        <List.Item>1 oz Lime Juice</List.Item>
         <List.Item>Ice</List.Item>
         <List.Item>1 Lime Wedge</List.Item>
         <List.Item>Coarse Salt on Rim</List.Item>

@@ -1,54 +1,39 @@
-import { Button, Container, Modal, Space, Stack, Text, Title } from '@mantine/core';
+import { Button, Card, createStyles, Modal, Stack, Text } from '@mantine/core';
 import { useState } from 'react';
+import ReviewComment from './ReviewComment';
 import ReviewForm from './ReviewForm';
-import StarRating from './StartRating';
+
+const useStyles = createStyles((theme) => ({
+  card: {
+    backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[5] : theme.colors.gray[1],
+    height: '100vh',
+    width: 350,
+  },
+}));
 
 function DrinkInfo() {
+  const { classes } = useStyles();
   const [opened, setOpened] = useState(false);
+
   return (
-    <Container
-      size={400}
-      px={10}
-      sx={(theme) => ({
-        backgroundColor: theme.colorScheme === 'dark' ? theme.colors.gray[8] : '#ced4da',
-        borderRadius: 4,
-        borderColor: '#000000',
-        borderStyle: 'solid',
-      })}
-    >
-      <Modal
-        opened={opened}
-        onClose={() => setOpened(false)}
-        title={
-          <Text
-            size={30}
-            weight={'bold'}
-            sx={(theme) => ({
-              fontFamily: 'Cambria, serif',
-              borderBottom: theme.colorScheme === 'dark' ? '2px dotted grey' : '2px dotted black',
-              borderTop: theme.colorScheme === 'dark' ? '2px dotted grey' : '2px dotted black',
-            })}
-          >
-            DRINK · REVIEW
-          </Text>
-        }
-      >
+    <Card withBorder className={classes.card}>
+      <Modal opened={opened} onClose={() => setOpened(false)} title='Leave a Review'>
         <ReviewForm />
       </Modal>
 
       <Stack justify='space-between'>
-        <Title>Reviews</Title>
-        <Space h='sm' />
-        <StarRating rating={5} />
-        <Text>Refreshing and love the citrus flavour.</Text>
-        <Space h='sm' />
-        <StarRating rating={5} />
-        <Text>Perfect balance of sweet, sour and spicy.</Text>
-        <Space h='xl' />
+        <Text fz={50} tt='capitalize' mb={10}>
+          Reviews
+        </Text>
         <Button onClick={() => setOpened(true)}>Leave a Review</Button>
-        <Space h='xl' />
+        <ReviewComment email='walter.white@outlook.com' rating={5}>
+          Refreshing and love the citrus flavour. I definitely recommend.
+        </ReviewComment>
+        <ReviewComment email='jesse.pinkman@gmail.com' rating={5}>
+          Perfect balance of sweet, sour and spicy
+        </ReviewComment>
       </Stack>
-    </Container>
+    </Card>
   );
 }
 

@@ -10,7 +10,7 @@ function IndividualDrink() {
   return (
     <>
       <DrinkHeader addFavouriteButton />
-      <div style={{ padding: 10, marginTop: 120, marginBottom: 120 }}>
+      <div style={{ padding: 10, marginTop: 120, marginBottom: 60 }}>
         <Group position='apart'>
           <Container>
             <Container mb={50}>
@@ -22,11 +22,10 @@ function IndividualDrink() {
                   $9.10
                 </Text>
               </Group>
-
               <StartRating rating={5} size={50} />
             </Container>
-            <Group position='apart'>
-              <Image src={Margarita} width={400} height={400} fit='contain' />
+            <Group position='apart' grow>
+              <Image src={Margarita} width={400} height={400} radius='md' />
               <DrinkInfo />
             </Group>
             <Space h='lg' />

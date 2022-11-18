@@ -46,7 +46,7 @@ const info: Array<DrinkSection> = [
         price: '$9.10',
         rating: 5,
         image: Margarita,
-        volume: '1 oz',
+        volume: '9 oz',
         category: 'cocktails',
       },
       {

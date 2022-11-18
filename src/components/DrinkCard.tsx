@@ -85,7 +85,7 @@ function DrinkCard({
           </Card.Section>
           <Group>
             <Badge>{category}</Badge>
-            <Badge>{volume}</Badge>
+            <Badge>Total Vol: {volume}</Badge>
           </Group>
           <Text weight={300} size={30} className={classes.title} mt='xs'>
             {title}
