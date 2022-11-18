@@ -16,10 +16,14 @@ function DrinkInfo() {
   const { classes } = useStyles();
   const [opened, setOpened] = useState(false);
 
+  function handleAddReview() {
+    setOpened(false)
+  }
+
   return (
     <Card withBorder className={classes.card}>
       <Modal opened={opened} onClose={() => setOpened(false)} title='Leave a Review'>
-        <ReviewForm />
+        <ReviewForm handleAddReview={handleAddReview} />
       </Modal>
 
       <Stack justify='space-between'>

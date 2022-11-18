@@ -1,12 +1,18 @@
 import { Button, Center, Container, Input, Text, Textarea, useMantineTheme } from '@mantine/core';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { FaStar } from 'react-icons/fa';
 
-function ReviewForm() {
+interface ReviewFormProps {
+  handleAddReview: any;
+}
+
+function ReviewForm({ handleAddReview }: ReviewFormProps) {
   const theme = useMantineTheme();
   const stars = Array(5).fill(0);
   const [currentValue, setCurrentValue] = useState(0);
   const [hoverValue, setHoverValue] = useState(undefined);
+  const comment = useRef<any>(null);
+  const email = useRef<any>(null);
 
   const handleClick = (value: any) => {
     setCurrentValue(value);
@@ -18,6 +24,13 @@ function ReviewForm() {
 
   const handleMouseLeave = () => {
     setHoverValue(undefined);
+  };
+
+  const handleSubmit = () => {
+    alert(`${email?.current?.value}, ${comment?.current?.value}, ${currentValue} stars`);
+    if (handleAddReview) {
+      handleAddReview();
+    }
   };
 
   return (
@@ -50,10 +63,12 @@ function ReviewForm() {
         </Container>
       </Center>
       <Text sx={{ marginTop: 25 }}>Comments:</Text>
-      <Textarea placeholder='Tell us your feedback' />
+      <Textarea ref={comment} placeholder='Tell us your feedback' />
       <Text sx={{ marginTop: 25 }}>Email:</Text>
-      <Input type='text'></Input>
-      <Button sx={{ marginTop: 25 }}>Submit</Button>
+      <Input ref={email} type='text' placeholder='your@email.com'></Input>
+      <Button onClick={handleSubmit} sx={{ marginTop: 25 }}>
+        Submit
+      </Button>
     </>
   );
 }
