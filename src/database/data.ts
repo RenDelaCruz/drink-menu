@@ -2,6 +2,8 @@ import Daiqiri from '../images/Daiqiri.jpeg';
 import Margarita from '../images/Margarita.jpg';
 import Negroni from '../images/Negroni.jpeg';
 import PinaColada from '../images/PinaColada.jpeg';
+import OldFashioned from '../images/OldFashioned.jpeg';
+import MoscowMule from '../images/MoscowMule.webp';
 
 type Category = 'cocktails' | 'beer' | 'wine' | 'spirits' | 'liqueurs';
 
@@ -42,10 +44,22 @@ const info: Array<DrinkSection> = [
         image: Daiqiri,
       },
       {
+        name: 'Old Fashioned',
+        price: '$7.05',
+        rating: 3,
+        image: OldFashioned,
+      },
+      {
         name: 'Piña Colada',
         price: '$7.05',
         rating: 4,
         image: PinaColada,
+      },
+      {
+        name: 'Moscow Mule',
+        price: '$7.05',
+        rating: 4,
+        image: MoscowMule,
       },
     ],
   },
