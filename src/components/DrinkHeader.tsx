@@ -9,6 +9,7 @@ import {
   Text,
   useMantineTheme,
 } from '@mantine/core';
+import { X } from 'tabler-icons-react';
 import { useLocalStorage } from '@mantine/hooks';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, HeartBroken, HeartOff, HeartPlus } from 'tabler-icons-react';
@@ -117,7 +118,7 @@ function DrinkHeader({
             </>
           )}
           {handleClear !== null && (
-            <Button variant='filled' leftIcon={<HeartBroken strokeWidth={2} />} onClick={handleClear} disabled={disableClear}>
+            <Button variant='filled' leftIcon={<X strokeWidth={2} />} onClick={handleClear} disabled={disableClear}>
               Clear All Favourites
             </Button>
           )}

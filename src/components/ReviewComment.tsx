@@ -25,7 +25,9 @@ function ReviewComment({ email, children, rating, datetime }: ReviewCommentProps
   return (
     <Paper withBorder p={20} radius='md' className={classes.comment}>
       <Group>
-        <Avatar color='teal' alt={email} radius='xl'></Avatar>
+        <Avatar color='teal' alt={email} radius='xl'>
+          {email.charAt(0).toUpperCase()}
+        </Avatar>
         <div>
           <Text size='sm'>{email}</Text>
           <Text size='xs' c='dimmed'>
