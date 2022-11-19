@@ -12,7 +12,7 @@ import {
 import { useLocalStorage } from '@mantine/hooks';
 import { useNavigate } from 'react-router-dom';
 import { Heart } from 'tabler-icons-react';
-import StarRating from './StartRating';
+import StarRating from './StarRating';
 
 const useStyles = createStyles((theme) => ({
   card: {
