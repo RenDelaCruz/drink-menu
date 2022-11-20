@@ -1,4 +1,4 @@
-import { Button, Center, Container, Grid, Group, Modal, Text } from '@mantine/core';
+import { Button, Center, Container, Grid, Group, Modal, Paper, Text } from '@mantine/core';
 import { useEffect, useState } from 'react';
 import { HeartBroken } from 'tabler-icons-react';
 import DrinkCard from '../components/DrinkCard';
@@ -7,14 +7,24 @@ import { allDrinks, Drink } from '../database/data';
 
 function EmptyFavourites() {
   return (
-    <Container mt='15vh'>
-      <Center>
-        <HeartBroken size={100} color='gray' />
-      </Center>
-      <Text c='dimmed' size={30}>
-        No favourites found
-      </Text>
-    </Container>
+    <Paper
+      withBorder
+      shadow='xs'
+      p='lg'
+      m='15vh auto 0 auto'
+      sx={(theme) => ({
+        backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[5] : theme.colors.gray[0],
+      })}
+    >
+      <Container>
+        <Center>
+          <HeartBroken size={100} color='gray' />
+        </Center>
+        <Text c='dimmed' size={30}>
+          No favourites found
+        </Text>
+      </Container>
+    </Paper>
   );
 }
 
@@ -63,9 +73,14 @@ function Favourites() {
       </Modal>
       <div style={{ padding: 10, marginTop: 120, marginBottom: 120 }}>
         <Container>
-          <Text fz={80} fw={700} tt='capitalize'>
-            Favourites
-          </Text>
+          <Group spacing='xl'>
+            <Text fz={80} fw={700} tt='capitalize'>
+              Favourites
+            </Text>
+            <Text fz={80} fw={400} c='dimmed'>
+              {`(${favourites.length})`}
+            </Text>
+          </Group>
           <Grid>
             {favourites.length ? (
               favourites.map((drink) => (

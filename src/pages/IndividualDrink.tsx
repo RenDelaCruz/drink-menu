@@ -3,7 +3,7 @@ import DrinkHeader from '../components/DrinkHeader';
 import DrinkInfo from '../components/DrinkInfo';
 import FoodPairs from '../components/FoodPairs';
 import ItemReview from '../components/ItemReview';
-import StartRating from '../components/StartRating';
+import StartRating from '../components/StarRating';
 import Margarita from '../images/Margarita.jpg';
 
 function IndividualDrink() {

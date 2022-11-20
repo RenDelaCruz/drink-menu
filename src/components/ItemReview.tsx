@@ -20,6 +20,18 @@ function DrinkInfo() {
   const [opened, setOpened] = useState(false);
   const [reviews, setReviews] = useLocalStorage<Array<any>>({ key: 'reviews', defaultValue: [] });
 
+  const getFormattedDate = () => {
+    const now = new Date();
+    const date = now.getDate();
+    const month = now.toLocaleString('default', { month: 'long' });
+    const year = now.getFullYear();
+    let time = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    if (time.charAt(0) === '0') {
+      time = time.substring(1);
+    }
+    return `${month} ${date}, ${year} at ${time}`;
+  };
+
   function handleAddReview({
     email = null,
     comment = null,
@@ -36,13 +48,14 @@ function DrinkInfo() {
         email,
         comment,
         selectedRating,
+        datetime: getFormattedDate(),
       },
     ]);
     showNotification({
       title: 'Success',
       message: 'Your review comment was added',
       icon: <Check />,
-      autoClose: 5000,
+      autoClose: 7000,
     });
   }
 
@@ -60,14 +73,27 @@ function DrinkInfo() {
           Leave a Review
         </Button>
         <ScrollArea.Autosize maxHeight={'81.5vh'}>
-          <ReviewComment email='walter.white@outlook.com' rating={5}>
+          <ReviewComment
+            email='walter.white@outlook.com'
+            rating={5}
+            datetime='October 29, 2022 at 4:36 PM'
+          >
             Refreshing and love the citrus flavour. I definitely recommend.
           </ReviewComment>
-          <ReviewComment email='jesse.pinkman@gmail.com' rating={5}>
+          <ReviewComment
+            email='jesse.pinkman@gmail.com'
+            rating={5}
+            datetime='November 13, 2022 at 11:23 AM'
+          >
             Perfect balance of sweet, sour and spicy
           </ReviewComment>
           {reviews.map((review, id) => (
-            <ReviewComment key={id} email={review.email} rating={review.selectedRating}>
+            <ReviewComment
+              key={id}
+              email={review.email}
+              rating={review.selectedRating}
+              datetime={review.datetime}
+            >
               {review.comment}
             </ReviewComment>
           ))}

@@ -14,7 +14,7 @@ export function ThemeToggle() {
 
   // Update browser meta theme-color on button toggle
   const themeColor = document.querySelector("meta[name='theme-color']");
-  themeColor?.setAttribute('content', colorScheme === 'dark' ? '#1A1B1E' : '#FFFFFF');
+  themeColor?.setAttribute('content', colorScheme === 'dark' ? '#158255' : '#1CAD72');
 
   return (
     <Switch

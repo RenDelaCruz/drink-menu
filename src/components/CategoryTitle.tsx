@@ -11,8 +11,8 @@ function CategoryTitle({ children }: CategoryTitleProps) {
 
   return (
     <Text
-      variant='gradient'
-      gradient={{ from: 'cyan', to: 'teal', deg: 180 }}
+      // variant='gradient'
+      // gradient={{ from: 'cyan', to: 'teal', deg: 180 }}
       sx={{ fontFamily: 'Greycliff CF, sans-serif' }}
       fz={80}
       fw={700}
