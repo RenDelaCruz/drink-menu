@@ -4,6 +4,13 @@ const useStyles = createStyles((theme) => ({
   card: {
     backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[5] : theme.colors.gray[1],
     height: 140,
+    transition: 'transform 150ms ease, box-shadow 100ms ease',
+    // cursor: 'pointer',
+
+    '&:hover': {
+      boxShadow: theme.shadows.md,
+      transform: 'scale(1.02)',
+    },
   },
 
   title: {
@@ -31,7 +38,7 @@ function Pairs({ image, category, title, price }: PairsProps) {
   return (
     <Card withBorder radius='md' p={0} className={classes.card}>
       <Group noWrap spacing={0}>
-        <Image src={image} width={120} height={140} />
+        <Image src={image} width={120} height={150} />
         <div className={classes.body}>
           <Text transform='uppercase' color='dimmed' weight={700} size='xs'>
             {category}
