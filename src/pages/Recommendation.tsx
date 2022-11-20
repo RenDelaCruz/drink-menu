@@ -1,7 +1,31 @@
 import { Center, Container, Flex, Group, Paper, Switch, Text } from '@mantine/core';
 import { useState } from 'react';
+import { HandClick } from 'tabler-icons-react';
 import DrinkHeader from '../components/DrinkHeader';
 import RecommendationList from '../components/RecommendationList';
+
+function EmptyRecommendation() {
+  return (
+    <Paper
+      withBorder
+      shadow='xs'
+      p='lg'
+      m='3vh auto 0 auto'
+      sx={(theme) => ({
+        backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[5] : theme.colors.gray[0],
+      })}
+    >
+      <Container>
+        <Center>
+          <HandClick size={100} color='gray' />
+        </Center>
+        <Text c='dimmed' size={30}>
+          Select a flavour above
+        </Text>
+      </Container>
+    </Paper>
+  );
+}
 
 function Recommendation() {
   const [state, setState] = useState({
@@ -39,7 +63,7 @@ function Recommendation() {
   return (
     <>
       <DrinkHeader />
-      <div style={{ padding: 10, marginTop: 120, marginBottom: 60 }}>
+      <div style={{ padding: 10, marginTop: 120, marginBottom: 120 }}>
         <Container>
           <Text fz={80} fw={700} tt='capitalize'>
             Recommendations
@@ -54,6 +78,11 @@ function Recommendation() {
           >
             <Center>
               <Text size={30}>Select your preferred drink flavours</Text>
+            </Center>
+            <Center>
+              <Text c='dimmed' size={20}>
+                Drinks are ordered below based on your selection
+              </Text>
             </Center>
             <Center>
               <Group spacing='lg'>
@@ -81,14 +110,23 @@ function Recommendation() {
           <br />
           <br />
           <Center>
-            <RecommendationList
-              bitter={state.bitter}
-              sweet={state.sweet}
-              sour={state.sour}
-              spicy={state.spicy}
-              fruity={state.fruity}
-              smoky={state.smoky}
-            />
+            {state.bitter ||
+            state.sweet ||
+            state.sour ||
+            state.spicy ||
+            state.fruity ||
+            state.smoky ? (
+              <RecommendationList
+                bitter={state.bitter}
+                sweet={state.sweet}
+                sour={state.sour}
+                spicy={state.spicy}
+                fruity={state.fruity}
+                smoky={state.smoky}
+              />
+            ) : (
+              <EmptyRecommendation />
+            )}
           </Center>
         </Container>
       </div>

@@ -1,4 +1,4 @@
-import { createStyles, Card, Image, Text, Group, Grid } from '@mantine/core';
+import { Card, createStyles, Grid, Group, Image, Text } from '@mantine/core';
 import { useNavigate } from 'react-router-dom';
 
 const useStyles = createStyles((theme) => ({
@@ -37,13 +37,13 @@ interface RecommendationViewProps {
   title: string;
   price: string;
   percentages: {
-    bitter: number
-    sweet: number
-    sour: number
-    spicy: number
-    fruity: number
-    smoky: number
-  }
+    bitter: number;
+    sweet: number;
+    sour: number;
+    spicy: number;
+    fruity: number;
+    smoky: number;
+  };
 }
 
 export function RecommendationView({
@@ -54,49 +54,76 @@ export function RecommendationView({
   percentages,
 }: RecommendationViewProps) {
   const { classes } = useStyles();
-  
+
   const navigate = useNavigate();
   return (
     <div onClick={() => navigate('/margarita')}>
-    <Card withBorder radius="md" p={0} className={classes.card} >
-      <Group noWrap spacing={0} >
-        <div className={classes.body}>
-          <Grid gutter='xl'>
-          <Grid.Col span="auto">
-              <Image src={image} height={190} width={190} />
-          </Grid.Col>
-          <Grid.Col span="auto" >
+      <Card withBorder radius='md' p={0} className={classes.card}>
+        <Group noWrap spacing={0}>
+          <div className={classes.body}>
+            <Grid gutter='xl'>
+              <Grid.Col span='auto'>
+                <Image src={image} height={190} width={190} />
+              </Grid.Col>
+              <Grid.Col span='auto'>
                 <div>
                   <Text c='dimmed' weight={300} size={30} className={classes.title}>
                     {title}
                   </Text>
                   <br />
-                  <Text c='dimmed' lineClamp={2} mt={20} size='sm'>{price}</Text>
-                  <Text c='dimmed' lineClamp={2} size='sm'>{category}</Text>
-                  
+                  <Text c='dimmed' lineClamp={2} mt={20} size='sm'>
+                    {price}
+                  </Text>
+                  <Text c='dimmed' lineClamp={2} size='sm'>
+                    {category}
+                  </Text>
                 </div>
-          </Grid.Col>
-          <Grid.Col span="auto" >
-                    <div>Bitterness:<br />{percentages.bitter}%</div>
-                    <br />
-                    <div>Sweetness:<br />{percentages.sweet}%</div>
-          </Grid.Col>
-          <Grid.Col span={"auto"}>
-                    <div>Sourness:<br />{percentages.sour}%</div>
+              </Grid.Col>
+              <Grid.Col span='auto'>
+                <div>
+                  Bitterness:
                   <br />
-                    <div>Spice:<br />{percentages.spicy}%</div>
-          </Grid.Col>
-          <Grid.Col span="auto">
-                    <div>Fruityness:<br />{percentages.fruity}%</div>
-                    <br />
-                    <div>Smokyness:<br />{percentages.smoky}%</div>
-          </Grid.Col>
-          </Grid>
-        </div>
-      </Group>
-    </Card>
-      </div>
-    );
+                  {percentages.bitter}%
+                </div>
+                <br />
+                <div>
+                  Sweetness:
+                  <br />
+                  {percentages.sweet}%
+                </div>
+              </Grid.Col>
+              <Grid.Col span={'auto'}>
+                <div>
+                  Sourness:
+                  <br />
+                  {percentages.sour}%
+                </div>
+                <br />
+                <div>
+                  Spice:
+                  <br />
+                  {percentages.spicy}%
+                </div>
+              </Grid.Col>
+              <Grid.Col span='auto'>
+                <div>
+                  Fruitiness:
+                  <br />
+                  {percentages.fruity}%
+                </div>
+                <br />
+                <div>
+                  Smokiness:
+                  <br />
+                  {percentages.smoky}%
+                </div>
+              </Grid.Col>
+            </Grid>
+          </div>
+        </Group>
+      </Card>
+    </div>
+  );
 }
 
 export default RecommendationView;
