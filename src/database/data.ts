@@ -68,7 +68,7 @@ const info: Array<DrinkSection> = [
       {
         name: 'Old Fashioned',
         price: '$9.05',
-        rating: 3,
+        rating: 2,
         image: OldFashioned,
         volume: '8 oz',
         category: 'cocktails',
@@ -113,7 +113,7 @@ const info: Array<DrinkSection> = [
       {
         name: 'Heineken',
         price: '$5.90',
-        rating: 1,
+        rating: 4,
         image: Heineken,
         volume: '20 oz',
         category: 'beer',
@@ -121,7 +121,7 @@ const info: Array<DrinkSection> = [
       {
         name: 'Belgian Moon',
         price: '$4.95',
-        rating: 2,
+        rating: 3,
         image: BelgianMoon,
         volume: '15 oz',
         category: 'beer',
@@ -200,7 +200,7 @@ const info: Array<DrinkSection> = [
       {
         name: 'Jägermeister',
         price: '$4.05',
-        rating: 1,
+        rating: 4,
         image: Jagermeister,
         volume: '1 oz',
         category: 'liqueurs',

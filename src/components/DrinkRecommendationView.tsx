@@ -1,5 +1,6 @@
-import { Card, createStyles, Grid, Group, Image, Text } from '@mantine/core';
+import { Badge, Box, Card, createStyles, Flex, Grid, Group, Image, Text } from '@mantine/core';
 import { useNavigate } from 'react-router-dom';
+import StarRating from './StarRating';
 
 const useStyles = createStyles((theme) => ({
   card: {
@@ -21,22 +22,66 @@ const useStyles = createStyles((theme) => ({
         : '0 4px 40px rgba(0, 0, 0, 0.1)',
   },
 
-  title: {
-    fontWeight: 700,
-    fontFamily: `Greycliff CF, ${theme.fontFamily}`,
-    lineHeight: 1.2,
-  },
-
   body: {
     padding: theme.spacing.md,
   },
+
+  label: {
+    textTransform: 'uppercase',
+    fontWeight: 700,
+    fontSize: theme.fontSizes.sm,
+    fontFamily: `Greycliff CF, ${theme.fontFamily}`,
+    color: theme.colors.gray[6],
+  },
 }));
+
+function FlavourBox({ flavour, percentage, isSelected }: any) {
+  const { classes } = useStyles();
+
+  return (
+    <Box
+      sx={(theme) => ({
+        backgroundColor:
+          theme.colorScheme === 'dark'
+            ? isSelected
+              ? theme.fn.rgba(theme.colors.teal[9], 0.5)
+              : theme.colors.dark[6]
+            : isSelected
+            ? theme.colors.teal[0]
+            : theme.colors.gray[1],
+        textAlign: 'center',
+        padding: theme.spacing.sm,
+        borderRadius: theme.radius.md,
+        color: isSelected
+          ? theme.colorScheme === 'dark'
+            ? theme.colors.teal[5]
+            : theme.colors.teal[7]
+          : undefined,
+        // border: isSelected ? '1px solid' : undefined,
+
+        '&:hover': {
+          backgroundColor: isSelected
+            ? theme.colorScheme === 'dark'
+              ? theme.fn.rgba(theme.colors.teal[7], 0.5)
+              : theme.colors.teal[1]
+            : theme.colorScheme === 'dark'
+            ? theme.colors.dark[4]
+            : theme.colors.gray[2],
+        },
+      })}
+    >
+      <Text className={classes.label}>{flavour}</Text>
+      <Text fw={isSelected ? 900 : 700}>{percentage}%</Text>
+    </Box>
+  );
+}
 
 interface RecommendationViewProps {
   image: string;
   category: string;
   title: string;
   price: string;
+  rating: 1 | 2 | 3 | 4 | 5;
   percentages: {
     bitter: number;
     sweet: number;
@@ -45,23 +90,7 @@ interface RecommendationViewProps {
     fruity: number;
     smoky: number;
   };
-}
-
-{
-  /* <Card withBorder radius='md' p={0} className={classes.card}>
-  <Group noWrap spacing={0}>
-    <Image src={image} width={120} height={150} />
-    <div className={classes.body}>
-      <Text transform='uppercase' color='dimmed' weight={700} size='xs'>
-        {category}
-      </Text>
-      <Text className={classes.title} mt='xs' mb='md'>
-        {title}
-      </Text>
-      <Text>{price}</Text>
-    </div>
-  </Group>
-</Card>; */
+  selected: any;
 }
 
 export function RecommendationView({
@@ -70,6 +99,8 @@ export function RecommendationView({
   title,
   price,
   percentages,
+  rating,
+  selected,
 }: RecommendationViewProps) {
   const { classes } = useStyles();
 
@@ -83,56 +114,58 @@ export function RecommendationView({
             <Grid gutter='xl'>
               <Grid.Col span={5} w={400}>
                 <div>
-                  <Text c='dimmed' weight={300} size={30} className={classes.title}>
+                  <Badge>{category}</Badge>
+                  <Text weight={300} size={30} mt='xs'>
                     {title}
                   </Text>
+                  <StarRating rating={rating} />
                   <br />
-                  <Text c='dimmed' lineClamp={2} mt={20} size='sm'>
+                  <Text size='xl' weight={900}>
                     {price}
                   </Text>
-                  <Text c='dimmed' lineClamp={2} size='sm'>
-                    {category}
-                  </Text>
                 </div>
               </Grid.Col>
               <Grid.Col span='auto'>
-                <div>
-                  Bitterness:
-                  <br />
-                  {percentages.bitter}%
-                </div>
-                <br />
-                <div>
-                  Sweetness:
-                  <br />
-                  {percentages.sweet}%
-                </div>
+                <Flex direction={'column'} justify='space-around' sx={{ height: '100%' }}>
+                  <FlavourBox
+                    flavour='Bitterness'
+                    percentage={percentages.bitter}
+                    isSelected={selected.bitter}
+                  />
+                  <FlavourBox
+                    flavour='Sweetness'
+                    percentage={percentages.sweet}
+                    isSelected={selected.sweet}
+                  />
+                </Flex>
               </Grid.Col>
               <Grid.Col span={'auto'}>
-                <div>
-                  Sourness:
-                  <br />
-                  {percentages.sour}%
-                </div>
-                <br />
-                <div>
-                  Spice:
-                  <br />
-                  {percentages.spicy}%
-                </div>
+                <Flex direction={'column'} justify='space-around' sx={{ height: '100%' }}>
+                  <FlavourBox
+                    flavour='Sourness'
+                    percentage={percentages.sour}
+                    isSelected={selected.sour}
+                  />
+                  <FlavourBox
+                    flavour='Spiciness'
+                    percentage={percentages.spicy}
+                    isSelected={selected.spicy}
+                  />
+                </Flex>
               </Grid.Col>
               <Grid.Col span='auto'>
-                <div>
-                  Fruitiness:
-                  <br />
-                  {percentages.fruity}%
-                </div>
-                <br />
-                <div>
-                  Smokiness:
-                  <br />
-                  {percentages.smoky}%
-                </div>
+                <Flex direction={'column'} justify='space-around' sx={{ height: '100%' }}>
+                  <FlavourBox
+                    flavour='Fruitiness'
+                    percentage={percentages.fruity}
+                    isSelected={selected.fruity}
+                  />
+                  <FlavourBox
+                    flavour='Smokiness'
+                    percentage={percentages.smoky}
+                    isSelected={selected.smoky}
+                  />
+                </Flex>
               </Grid.Col>
             </Grid>
           </div>

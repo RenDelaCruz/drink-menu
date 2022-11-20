@@ -48,6 +48,8 @@ export function RecommendationList(props: any) {
                           title={drink.name}
                           price={drink.price}
                           percentages={percent}
+                          rating={drink.rating}
+                          selected={props}
                         />
                       ) : (
                         ''
