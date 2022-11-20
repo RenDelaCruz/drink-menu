@@ -8,6 +8,7 @@ const useStyles = createStyles((theme) => ({
     width: 1000,
     transition: 'top ease 0.2s',
     position: 'relative',
+    marginBottom: 15,
     top: 0,
     '&:hover': {
       top: -5,
@@ -46,6 +47,23 @@ interface RecommendationViewProps {
   };
 }
 
+{
+  /* <Card withBorder radius='md' p={0} className={classes.card}>
+  <Group noWrap spacing={0}>
+    <Image src={image} width={120} height={150} />
+    <div className={classes.body}>
+      <Text transform='uppercase' color='dimmed' weight={700} size='xs'>
+        {category}
+      </Text>
+      <Text className={classes.title} mt='xs' mb='md'>
+        {title}
+      </Text>
+      <Text>{price}</Text>
+    </div>
+  </Group>
+</Card>; */
+}
+
 export function RecommendationView({
   image,
   category,
@@ -59,13 +77,11 @@ export function RecommendationView({
   return (
     <div onClick={() => navigate('/margarita')}>
       <Card withBorder radius='md' p={0} className={classes.card}>
-        <Group noWrap spacing={0}>
+        <Group noWrap spacing={30}>
+          <Image src={image} height={200} width={250} />
           <div className={classes.body}>
             <Grid gutter='xl'>
-              <Grid.Col span='auto'>
-                <Image src={image} height={190} width={190} />
-              </Grid.Col>
-              <Grid.Col span='auto'>
+              <Grid.Col span={5} w={400}>
                 <div>
                   <Text c='dimmed' weight={300} size={30} className={classes.title}>
                     {title}
