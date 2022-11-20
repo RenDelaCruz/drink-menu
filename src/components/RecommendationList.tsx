@@ -1,26 +1,51 @@
-import { Category } from "tabler-icons-react";
-import { Stack, Button } from '@mantine/core';
+import { Stack } from '@mantine/core';
 import RecommendationView from "./DrinkRecommendationView";
+import info from '../database/data';
+import pcts from "../database/percentages";
 
 export function RecommendationList(props : any) {
-  var lst1 = [1,2,3,4,5]
-  var lst2 = [2,4,5,3,1]
 
+  function compare( a : any, b : any) {
+    var bi = props.bitter ? 1 : 0
+    var sw = props.sweet ? 1 : 0
+    var so = props.sour ? 1 : 0
+    var sp = props.spicy ? 1 : 0
+    var fr = props.fruity ? 1 : 0
+    var sm = props.smoky ? 1 : 0
 
-  const obj = {name: "mr", avatar: "C:\Users\dbedn\test\drink-menu\src\images\Enchiladas.jpg"}
+    var count_a = bi*a.percent.bitter + sw*a.percent.sweet + so*a.percent.sour + sp*a.percent.spicy + fr*a.percent.fruity + sm*a.percent.smoky
+    var count_b = bi*b.percent.bitter + sw*b.percent.sweet + so*b.percent.sour + sp*b.percent.spicy + fr*b.percent.fruity + sm*b.percent.smoky
+    
+    return(count_b - count_a);
+  }
+
   return (
     <div>
       <div>
-        <p>{props.bitter ? '1' : '0'}
-          {props.sweet ? '1' : '0'}</p>
-      </div>
-      <div>
-        {props.bitter ? lst1.toString() : lst2.toString()}
-        <Stack sx={(theme) => ({ backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0] })}>
-          <RecommendationView image={"C:\Users\dbedn\test\drink-menu\src\images\Enchiladas.jpg"} category="red" title="red" date="5" author={obj}  />
-          <RecommendationView image={"C:\Users\dbedn\test\drink-menu\src\images\Enchiladas.jpg"} category="red" title="red" date="5" author={obj}  />
-          <RecommendationView image={"C:\Users\dbedn\test\drink-menu\src\images\Enchiladas.jpg"} category="red" title="red" date="5" author={obj}  />
-        </Stack>
+          <div>
+            {pcts.sort((compare)).map(({ pname, percent }) => 
+              <>
+                {info.map(({ category, drinks }) => (
+                      <Stack>
+                    {drinks.map((drink) => (
+                      <>
+                      {drink.name===pname.name ?(
+                        <RecommendationView 
+                          key={drink.name}
+                          image={drink.image}
+                          category={category}
+                          title={drink.name}
+                          price={drink.price}
+                          percentages={percent}
+                        />
+                      ): ("")}
+                      </>
+                    ))}
+                      </Stack>
+                ))}
+              </>
+            )}
+          </div>
       </div>
     </div>
   );
